@@ -3,16 +3,16 @@ import { getAllAMC, getAllAIME, ContestYear } from '../lib/fetchContests';
 import { Link } from 'react-router-dom';
 
 enum ContestMenuType {
+	AMC8,
 	AMC10,
 	AMC12,
-	AMC8,
 	AIME,
 }
 
 const results = new Map<ContestMenuType, ContestYear[]>();
+results.set(ContestMenuType.AMC8, getAllAMC(8));
 results.set(ContestMenuType.AMC10, getAllAMC(10));
 results.set(ContestMenuType.AMC12, getAllAMC(12));
-results.set(ContestMenuType.AMC8, getAllAMC(8));
 results.set(ContestMenuType.AIME, getAllAIME());
 
 function MenuItem(props: { name: string }) {
@@ -27,7 +27,7 @@ function MenuItem(props: { name: string }) {
 }
 
 export default function ContestMenu(props: { email: string }) {
-	const [contestType, setContestType] = useState(ContestMenuType.AMC10);
+	const [contestType, setContestType] = useState(ContestMenuType.AMC8);
 
 	return (
 		<>
@@ -38,7 +38,7 @@ export default function ContestMenu(props: { email: string }) {
 			</div>
 			<h1 className='p-3'> Contests </h1>
 			<div className='flex flex-row py-2'>
-				{['AMC 10', 'AMC 12', 'AMC 8', 'AIME'].map((val, index) => (
+				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
 						className={
 							'w-56 rounded-lg m-2 my-3 p-3 text-lg hover:shadow-2xl text-center' +
