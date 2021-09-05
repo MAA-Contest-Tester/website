@@ -60,3 +60,9 @@ export async function gradeAMC(
 		throw e;
 	}
 }
+
+// checks if a string is a perfect score.
+export const perfectScore = (s: string) => {
+	const [a, b] = s.split('/').map((x) => parseInt(x));
+	return !isNaN(a) && a === b;
+};
