@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.auth {
+	@apply bg-blue-600 text-white rounded-xl p-4 m-2 text-lg hover:bg-blue-500 shadow-lg;
+}
+
+h1 {
+	@apply md:text-4xl text-2xl text-black m-3 p-2;
+}
