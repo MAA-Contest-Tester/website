@@ -1,5 +1,5 @@
 import React from 'react';
-import { gradeAIME } from '../../lib/aops';
+import { gradeAIME } from '../../lib/grade';
 import Contest from './Contest';
 
 export default class AIME extends Contest {

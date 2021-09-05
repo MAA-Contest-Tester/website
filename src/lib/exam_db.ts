@@ -48,7 +48,8 @@ export async function addExam(
 	exam: string,
 	answer: (string | null)[],
 	correct: AnswerState[],
-	score: string
+	score: string,
+	notes: string | null
 ) {
 	const response = await getID(email, exam);
 	if (!response) {
@@ -59,6 +60,7 @@ export async function addExam(
 			answer: answer,
 			correct: correct,
 			score: score,
+			notes: notes,
 		});
 	} else {
 		// overwrite existing one.
@@ -68,6 +70,7 @@ export async function addExam(
 			answer: answer,
 			correct: correct,
 			score: score,
+			notes: notes,
 		});
 	}
 }

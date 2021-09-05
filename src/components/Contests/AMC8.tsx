@@ -1,6 +1,6 @@
 import React from 'react';
 import Contest from './Contest';
-import { gradeAMC } from '../../lib/aops';
+import { gradeAMC } from '../../lib/grade';
 
 export default class AMC8 extends Contest {
 	numberOfProblems() {

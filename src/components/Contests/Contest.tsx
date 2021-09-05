@@ -6,6 +6,7 @@ import Timer from '../Timer';
 import Loading from '../../svg/Loading.svg';
 import { getAuth, Auth } from 'firebase/auth';
 import { app } from '../Firebase';
+import { perfectScore } from '../../lib/grade';
 
 type ContestStateType = {
 	answer: any[];
@@ -13,6 +14,7 @@ type ContestStateType = {
 	loading: boolean;
 	errors: string | null;
 	email: string | null;
+	notes: string | null;
 };
 
 export default abstract class Contest extends Component<{ name: string }> {
@@ -54,6 +56,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 				this !== null && this.auth !== null && this.auth.currentUser !== null
 					? this.auth.currentUser.email
 					: null,
+			notes: null,
 		};
 	}
 
@@ -72,6 +75,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 					this.setState({
 						answer: res.answer || this.defaultAnswer,
 						correct: res.correct || this.defaultCorrect,
+						notes: res.notes || null,
 						errors: null,
 					});
 				}
@@ -98,7 +102,8 @@ export default abstract class Contest extends Component<{ name: string }> {
 				this.name,
 				updatedAnswer,
 				graded,
-				this.score()
+				this.score(),
+				this.state.notes
 			);
 			this.setState({ correct: graded, loading: false });
 		} catch (e) {
@@ -118,7 +123,8 @@ export default abstract class Contest extends Component<{ name: string }> {
 				this.name,
 				this.state.answer,
 				this.state.correct,
-				this.score()
+				this.score(),
+				this.state.notes
 			);
 			this.setState({ loading: false });
 		} catch (e) {
@@ -130,10 +136,33 @@ export default abstract class Contest extends Component<{ name: string }> {
 	clearAnswers = async () => {
 		try {
 			this.setState({ loading: true });
+			this.setState({
+				answer: this.defaultAnswer,
+				correct: this.defaultCorrect,
+			});
+			await addExam(
+				this.state.email!,
+				this.name,
+				this.defaultAnswer,
+				this.defaultCorrect,
+				this.score(),
+				this.state.notes
+			);
+			this.setState({ loading: false });
+		} catch (e) {
+			this.setState({ errors: 'DB might be down.', loading: false });
+			console.error('error', e);
+		}
+	};
+
+	clearEverything = async () => {
+		try {
+			this.setState({ loading: true });
 			await clearResponse(this.state.email!, this.name);
 			this.setState({
 				answer: this.defaultAnswer,
 				correct: this.defaultCorrect,
+				notes: null,
 				loading: false,
 			});
 		} catch (e) {
@@ -145,15 +174,14 @@ export default abstract class Contest extends Component<{ name: string }> {
 	render() {
 		return (
 			<div className='m-4 p-2'>
-				<a
-					href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
-					target='_blank'
-					rel='noreferrer'
-				>
-					<h1 className='mx-3 md:mx-5 my-3 p-2 bg-blue-200 text-black rounded-lg flex'>
-						{this.name.split(urlSeparator).join(' ')} ({this.score()})
+				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg flex'>
+					{this.name.split(urlSeparator).join(' ')} ({this.score()})
+				</h1>
+				{perfectScore(this.score()) && (
+					<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
+						Perfect Score
 					</h1>
-				</a>
+				)}
 				{this.state.loading && (
 					<img src={Loading} className='m-2 w-48' alt='loading svg' />
 				)}
@@ -164,6 +192,15 @@ export default abstract class Contest extends Component<{ name: string }> {
 				)}
 				<div className='flex flex-col md:flex-row justify-center'>
 					<Timer mins={this.timeGiven()} />
+					<a
+						className='bg-yellow-600 hover:bg-yellow-500 text-white text-xl p-3 m-3 rounded-xl flex text-center items-center'
+						href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
+						target='_blank'
+						rel='noreferrer'
+						// prevent concurrent API calls
+					>
+						Link
+					</a>
 					<button
 						className='bg-blue-600 hover:bg-blue-500 text-white text-xl p-3 m-3 rounded-xl'
 						// prevent concurrent API calls
@@ -172,12 +209,20 @@ export default abstract class Contest extends Component<{ name: string }> {
 						Save
 					</button>
 					<button
-						className='bg-red-600 hover:bg-red-500 text-white text-xl p-3 m-3 rounded-xl'
+						className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.updateAnswers}
 					>
 						Grade
 					</button>
+					<textarea
+						rows={4}
+						cols={50}
+						className='border-2 border-black outline-none rounded-lg m-3 p-3'
+						placeholder='Basic Notes Pad for anything involving the contest.'
+						value={this.state.notes || ''}
+						onChange={(e) => this.setState({ notes: e.target.value })}
+					></textarea>
 				</div>
 				<div className='p-3'>
 					<div className='flex flex-row flex-wrap justify-center'>
@@ -197,11 +242,18 @@ export default abstract class Contest extends Component<{ name: string }> {
 					</div>
 					<div className='flex flex-row justify-center'>
 						<button
-							className='bg-red-600 hover:bg-red-500 text-white text-xl p-3 m-3 rounded-xl w-48'
+							className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl w-48'
 							// prevent concurrent API calls
 							onClick={this.state.loading ? () => 0 : this.clearAnswers}
 						>
-							Clear
+							Clear Answers Only
+						</button>
+						<button
+							className='bg-red-600 hover:bg-red-500 text-white text-xl p-3 m-3 rounded-xl w-48'
+							// prevent concurrent API calls
+							onClick={this.state.loading ? () => 0 : this.clearEverything}
+						>
+							Clear Everything (including notes)
 						</button>
 					</div>
 				</div>
