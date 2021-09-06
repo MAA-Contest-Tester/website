@@ -23,7 +23,7 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 		<Link to={`/${props.name}`}>
 			<div
 				className={
-					'w-56 mx-1 my-2 shadow-lg hover:shadow-xl rounded-xl p-3 text-center' +
+					'w-56 mx-1 my-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 rounded-xl p-3 text-center' +
 					' ' +
 					(props.perfect
 						? 'bg-green-100'
@@ -39,9 +39,17 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 }
 
 export default function ContestMenu(props: { email: string }) {
-	const [contestType, setContestType] = useState(ContestMenuType.AMC8);
+	// preserve selection
+	const bounds = (x: number) => 0 <= x && x < 4;
+	const [contestType, setContestType] = useState(
+		localStorage.getItem('maatester_selected') &&
+			bounds(parseInt(localStorage.getItem('maatester_selected')!))
+			? parseInt(localStorage.getItem('maatester_selected')!)
+			: ContestMenuType.AMC8
+	);
 	const [solved, setSolved] = useState(new Set<string>());
 	const [perfect, setPerfect] = useState(new Set<string>());
+
 	useEffect(() => {
 		getExamsSolved(props.email)
 			.then((result) => {
@@ -63,25 +71,21 @@ export default function ContestMenu(props: { email: string }) {
 
 	return (
 		<>
-			<div className='flex'>
-				<div className='p-2 rounded-lg bg-green-200 flex-none text-black'>
-					Logged in as {props.email}
-				</div>
-			</div>
 			<h1 className='p-3'> Contests </h1>
 			<div className='flex flex-row py-2'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
 						className={
-							'w-56 rounded-lg m-2 my-3 p-3 text-lg hover:shadow-2xl text-center' +
+							'w-56 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center' +
 							' ' +
 							(index === contestType
-								? 'bg-green-200 shadow-2xl'
+								? 'bg-green-200 -translate-y-1 shadow-lg'
 								: 'bg-blue-100 shadow-lg')
 						}
 						key={'MenuBar' + index}
 						onClick={(e) => {
 							setContestType(index);
+							localStorage.setItem('maatester_selected', index.toString());
 						}}
 					>
 						{val}

@@ -193,23 +193,25 @@ export default abstract class Contest extends Component<{ name: string }> {
 				<div className='flex flex-col md:flex-row justify-center'>
 					<Timer mins={this.timeGiven()} />
 					<a
-						className='bg-yellow-600 hover:bg-yellow-500 text-white text-xl p-3 m-3 rounded-xl flex text-center items-center'
 						href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
 						target='_blank'
 						rel='noreferrer'
+						className='m-3'
 						// prevent concurrent API calls
 					>
-						Link
+						<button className='bg-yellow-600 hover:bg-yellow-500 text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
+							Contest URL
+						</button>
 					</a>
 					<button
-						className='bg-blue-600 hover:bg-blue-500 text-white text-xl p-3 m-3 rounded-xl'
+						className='bg-blue-600 hover:bg-blue-500 text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.saveAnswers}
 					>
 						Save
 					</button>
 					<button
-						className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl'
+						className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.updateAnswers}
 					>

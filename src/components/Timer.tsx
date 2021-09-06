@@ -71,14 +71,14 @@ export default class Timer extends Component<TimerProps, TimerState> {
 				</div>
 				<div className='flex'>
 					<button
-						className='flex-auto bg-green-400 hover:bg-green-500 p-3 m-1 rounded-lg text-white text-center'
+						className='flex-auto bg-green-400 hover:bg-green-500 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
 						onClick={this.state.running ? this.stop : this.start}
 					>
 						{this.state.running ? 'Stop' : 'Start'}
 					</button>
 					{!this.state.running && (
 						<button
-							className='flex-auto bg-blue-400 hover:bg-blue-500 p-3 m-1 rounded-lg text-white text-center'
+							className='flex-auto bg-blue-400 hover:bg-blue-500 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
 							onClick={this.reset}
 						>
 							Reset
