@@ -190,7 +190,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 						Error: {this.state.errors}
 					</div>
 				)}
-				<div className='flex flex-col md:flex-row justify-center'>
+				<div className='flex flex-row flex-wrap justify-center'>
 					<Timer mins={this.timeGiven()} />
 					<a
 						href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
@@ -219,7 +219,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 					</button>
 					<textarea
 						rows={4}
-						cols={50}
+						cols={40}
 						className='border-2 border-black outline-none rounded-lg m-3 p-3'
 						placeholder='Basic Notes Pad for anything involving the contest.'
 						value={this.state.notes || ''}
@@ -244,14 +244,14 @@ export default abstract class Contest extends Component<{ name: string }> {
 					</div>
 					<div className='flex flex-row justify-center'>
 						<button
-							className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl w-48'
+							className='bg-purple-600 hover:bg-purple-500 text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 							// prevent concurrent API calls
 							onClick={this.state.loading ? () => 0 : this.clearAnswers}
 						>
 							Clear Answers Only
 						</button>
 						<button
-							className='bg-red-600 hover:bg-red-500 text-white text-xl p-3 m-3 rounded-xl w-48'
+							className='bg-red-600 hover:bg-red-500 text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 							// prevent concurrent API calls
 							onClick={this.state.loading ? () => 0 : this.clearEverything}
 						>

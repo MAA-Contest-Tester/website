@@ -72,11 +72,11 @@ export default function ContestMenu(props: { email: string }) {
 	return (
 		<>
 			<h1 className='p-3'> Contests </h1>
-			<div className='flex flex-row py-2'>
+			<div className='flex flex-row flex-wrap py-2'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
 						className={
-							'w-56 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center' +
+							'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center' +
 							' ' +
 							(index === contestType
 								? 'bg-green-200 -translate-y-1 shadow-lg'

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Home, { AboutPage } from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Contest from './components/getContest';
 import { Error404 } from './components/Errors';
@@ -18,6 +18,7 @@ function App() {
 				<Navbar />
 				<Switch>
 					<Route path='/' exact component={Home} />
+					<Route path='/about' exact component={AboutPage} />
 					<Route path='/:contest' component={URLContest} />
 					<Route path='*' component={Error404} />
 				</Switch>
