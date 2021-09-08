@@ -146,7 +146,6 @@ export default abstract class Contest extends Component<{ name: string }> {
       _.isEqual(this.state.answer, this.defaultAnswer) &&
       _.isEqual(this.state.correct, this.defaultCorrect)
     ) {
-      console.log("runs");
       this.setState({
         saved: true,
       });
