@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .auth {
-	@apply bg-blue-600 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold;
+	@apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold;
 }
 
 h1 {

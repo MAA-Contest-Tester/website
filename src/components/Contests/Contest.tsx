@@ -204,7 +204,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 				<div className='flex flex-row flex-wrap justify-center'>
 					<Timer mins={this.timeGiven()} />
 					<button
-						className='bg-blue-600 font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+						className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.saveAnswers}
 					>
@@ -217,13 +217,13 @@ export default abstract class Contest extends Component<{ name: string }> {
 						className='m-3'
 						// prevent concurrent API calls
 					>
-						<button className='bg-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
+						<button className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
 							Go to <br /> Contest
 						</button>
 					</a>
 
 					<button
-						className='bg-black font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+						className='bg-gradient-to-r from-gray-700 to-black font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.updateAnswers}
 					>
@@ -262,16 +262,16 @@ export default abstract class Contest extends Component<{ name: string }> {
 					</div>
 					<div className='w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl'>
 						<h1 className='font-bold my-2 p-3 mx-0'>Danger Zone</h1>
-						<div className='flex flex-row justify-center'>
+						<div className='flex flex-row'>
 							<button
-								className='bg-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
+								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
 								onClick={this.state.loading ? () => 0 : this.clearAnswers}
 							>
 								Clear Answers Only
 							</button>
 							<button
-								className='bg-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
+								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
 								onClick={this.state.loading ? () => 0 : this.clearEverything}
 							>
