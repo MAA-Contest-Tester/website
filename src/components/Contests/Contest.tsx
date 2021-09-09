@@ -260,9 +260,9 @@ export default abstract class Contest extends Component<{ name: string }> {
 							</div>
 						))}
 					</div>
-					<div className='w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl'>
+					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl'>
 						<h1 className='font-bold my-2 p-3 mx-0'>Danger Zone</h1>
-						<div className='flex flex-row'>
+						<div className='flex flex-row flex-wrap'>
 							<button
 								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
