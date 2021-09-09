@@ -19,8 +19,8 @@ function App() {
 				<Navbar />
 				<div className='mx-2 px-5'>
 					<Switch>
-						<Route path='/' exact component={Home} />
-						<Route path='/about' exact component={AboutPage} />
+						<Route path='/' exact component={AboutPage} />
+						<Route path='/home' exact component={Home} />
 						<Route path='/:contest' component={URLContest} />
 						<Route path='*' component={Error404} />
 					</Switch>

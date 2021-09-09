@@ -236,9 +236,12 @@ export default abstract class Contest extends Component<{ name: string }> {
 						placeholder='Notes Pad for anything involving the contest.'
 						value={this.state.notes || ''}
 						onChange={(e) => this.setState({ notes: e.target.value })}
-					></textarea>
+					/>
 				</div>
 				<div className='p-3'>
+					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold'>
+						Answer Sheet
+					</h1>
 					<div className='flex flex-wrap flex-row justify-left'>
 						{this.iterationArray.map((number) => (
 							<div
@@ -258,7 +261,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 						))}
 					</div>
 					<div className='w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl'>
-						<div className='font-bold text-3xl my-2 p-3'>Danger Zone</div>
+						<h1 className='font-bold my-2 p-3 mx-0'>Danger Zone</h1>
 						<div className='flex flex-row justify-center'>
 							<button
 								className='bg-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'

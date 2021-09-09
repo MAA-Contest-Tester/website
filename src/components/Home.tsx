@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './Firebase';
 import ContestMenu from './ContestMenu';
+import { Redirect } from 'react-router';
 import '../index.css';
 
 export function AboutPage() {
@@ -57,5 +58,13 @@ export function AboutPage() {
 export default function Home() {
 	const [user] = useAuthState(auth);
 
-	return <>{!user ? <AboutPage /> : <ContestMenu email={user.email} />}</>;
+	return (
+		<>
+			{user ? (
+				<ContestMenu email={user.email} />
+			) : (
+				<Redirect from='/home' to='/' />
+			)}
+		</>
+	);
 }
