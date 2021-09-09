@@ -6,6 +6,7 @@ import Home, { AboutPage } from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Contest from './components/getContest';
 import { Error404 } from './components/Errors';
+import Citation from './components/Citation';
 
 function URLContest({ match: { params } }: { match: { params: any } }) {
 	return <Contest name={params.contest} />;
@@ -22,6 +23,7 @@ function App() {
 					<Route path='/:contest' component={URLContest} />
 					<Route path='*' component={Error404} />
 				</Switch>
+				<Citation />
 			</Router>
 		</div>
 	);

@@ -42,8 +42,8 @@ export function LogIn() {
 				}}
 			>
 				<div className='flex flex-row gap-1'>
-					<div> Log in with </div>
-					<img src={GoogleLogo} alt='google logo' />
+					<span> Log in/Register with </span>
+					<img src={GoogleLogo} className='w-5' alt='google logo' />
 				</div>
 			</button>
 		</>
@@ -60,21 +60,4 @@ export function LogOut() {
 			</NavLink>
 		)
 	);
-}
-
-export default function Auth() {
-	const [user] = useAuthState(auth);
-	if (user) {
-		return (
-			<>
-				<h1 className='m-2'> U r logged in as {user.email}</h1> <LogOut />
-			</>
-		);
-	} else {
-		return (
-			<>
-				<LogIn /> <LogOut />
-			</>
-		);
-	}
 }

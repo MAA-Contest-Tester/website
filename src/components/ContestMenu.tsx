@@ -70,17 +70,17 @@ export default function ContestMenu(props: { email: string }) {
 	}, [props.email]);
 
 	return (
-		<>
-			<h1 className='p-3'> Contests </h1>
+		<div className='m-2 p-3'>
+			<h1 className='mx-0 my-2 font-bold'> Contests </h1>
 			<div className='flex flex-row flex-wrap py-2'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
 						className={
-							'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center' +
+							'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
 							' ' +
 							(index === contestType
-								? 'bg-green-200 -translate-y-1 shadow-lg'
-								: 'bg-blue-100 shadow-lg')
+								? 'bg-blue-700 -translate-y-1'
+								: 'bg-blue-500 shadow-lg')
 						}
 						key={'MenuBar' + index}
 						onClick={(e) => {
@@ -106,6 +106,6 @@ export default function ContestMenu(props: { email: string }) {
 					</div>
 				</>
 			))}
-		</>
+		</div>
 	);
 }

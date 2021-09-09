@@ -6,30 +6,56 @@ import '../index.css';
 
 export function AboutPage() {
 	return (
-		<>
-			<h1> The MAA Contest Tester </h1>
-			<div className='flex flex-row flex-wrap'>
-				<div className='text-xl rounded-lg shadow-lg p-2 m-3 bg-gray-100 max-w-xl text-center items-center flex'>
-					This React/Firebase Website is designed to help facilitate AMC/AIME
-					Test Prep and practice tests. It supports all AMC 10/12 contests from
-					2000 onwards, all AMC 8 contests from 1999 onwards, and all AIME
-					contests from 1983 onwards.
-				</div>
-				<div className='text-xl rounded-lg shadow-lg p-2 m-3 bg-gray-100 max-w-xl text-center items-center flex'>
-					If you do not have an account, logging in will automatically create a
-					new account for you.
+		<div className='m-2 p-3'>
+			<h1 className='font-bold text-center text-5xl'>
+				The MAA <span className='text-blue-700'>Contest Tester </span>
+			</h1>
+			<div className='flex flex-row flex-wrap justify-center'>
+				<div className='m-2 p-3 text-xl max-w-2xl'>
+					A tool designed to help you achieve your math contest goals by
+					automatically <span className='font-bold'> recording</span> and{' '}
+					<span className='font-bold'>grading</span> practice contests
 				</div>
 			</div>
-		</>
+			<div className='m-2 p-3 text-xl text-center'>
+				<h2 className='font-bold text-3xl'>
+					<span className='text-blue-700'>Support</span> for all modern
+					non-proof MAA Contests
+				</h2>
+				<div className='m-3 flex justify-center'>
+					<ul className='bg-gray-100 min-w-96 m-2 p-3 rounded-xl text-left'>
+						<li>
+							<span className='text-blue-700 font-bold'> All AMC 8 </span>{' '}
+							Contests (1999 -)
+						</li>
+						<li>
+							<span className='text-blue-700 font-bold'> All AMC 10/12 </span>{' '}
+							Contests (2000 -)
+						</li>
+						<li>
+							<span className='text-blue-700 font-bold'> All AIME </span>{' '}
+							Contests (1983 -)
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div className='m-2 p-3 text-xl text-center'>
+				<h2 className='font-bold text-3xl'>
+					<span className='text-blue-700'>Automated</span> Contest Grading
+				</h2>
+				<div className='m-3 flex justify-center'>
+					<div className='bg-gray-100 w-96 m-2 p-3 rounded-xl text-left'>
+						The site uses a firebase function to fetch data from the AOPS answer
+						key and parses the answers out with a regular expression.
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 }
 
 export default function Home() {
 	const [user] = useAuthState(auth);
 
-	return (
-		<div className='m-2 p-3'>
-			{!user ? <AboutPage /> : <ContestMenu email={user.email} />}
-		</div>
-	);
+	return <>{!user ? <AboutPage /> : <ContestMenu email={user.email} />}</>;
 }

@@ -8,6 +8,15 @@ import Home from '../svg/Home.svg';
 export default function Navbar() {
 	const [user] = useAuthState(auth);
 	const [hidden, setHidden] = useState(false);
+
+	const reduceButton = (
+		<button
+			className='text-black mx-3 my-2 px-2 py-4 text-2xl bg-green-400 rounded-lg shadow-lg font-bold'
+			onClick={() => setHidden(true)}
+		>
+			-
+		</button>
+	);
 	return (
 		<>
 			{hidden ? (
@@ -15,7 +24,7 @@ export default function Navbar() {
 					<div className='relative'>
 						<div className='absolute right-0'>
 							<button
-								className='text-black bg-green-400 shadow-lg mx-3 my-2 px-2 py-6 rounded-lg text-2xl'
+								className='text-black bg-green-400 shadow-lg mx-3 my-2 px-2 py-6 rounded-lg text-2xl font-bold'
 								onClick={() => setHidden(false)}
 							>
 								+
@@ -26,11 +35,13 @@ export default function Navbar() {
 			) : (
 				<div className='sticky left-3 top-3 bg-yellow-400 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
 					<Link to='/about'>
-						<div className='text-black text-3xl m-2'>MAA Contest Tester</div>
+						<div className='auth'>About</div>
 					</Link>
 					{user ? (
 						<>
-							<div className='text-black p-4 m-2 text-lg'>{user.email}</div>
+							<div className='p-4 m-2 text-lg bg-white text-black rounded-xl shadow-sm'>
+								Logged in as <span className='font-bold'>{user.email}</span>
+							</div>
 							<div className='flex flex-wrap flex-row justify-between'>
 								<Link to='/'>
 									<div className='auth'>
@@ -38,16 +49,14 @@ export default function Navbar() {
 									</div>
 								</Link>
 								<LogOut />
-								<button
-									className='text-black mx-3 my-2 px-2 py-4 text-2xl bg-green-400 rounded-lg shadow-lg'
-									onClick={() => setHidden(true)}
-								>
-									-
-								</button>
+								{reduceButton}
 							</div>
 						</>
 					) : (
-						<LogIn />
+						<div className='flex flex-wrap flex-row justify-between'>
+							<LogIn />
+							{reduceButton}
+						</div>
 					)}
 				</div>
 			)}
