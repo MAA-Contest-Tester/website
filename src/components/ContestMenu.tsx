@@ -94,7 +94,7 @@ export default function ContestMenu(props: { email: string }) {
 			</div>
 			{results.get(contestType)!.map((y: ContestYear) => (
 				<>
-					<h2 className='text-2xl m-2'>{y.year}</h2>
+					<h2 className='text-2xl m-2 font-semibold'>{y.year}</h2>
 					<div className='flex flex-row flex-wrap'>
 						{y.contests.map((s) => (
 							<MenuItem

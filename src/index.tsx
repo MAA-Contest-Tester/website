@@ -17,13 +17,15 @@ function App() {
 		<div>
 			<Router>
 				<Navbar />
-				<Switch>
-					<Route path='/' exact component={Home} />
-					<Route path='/about' exact component={AboutPage} />
-					<Route path='/:contest' component={URLContest} />
-					<Route path='*' component={Error404} />
-				</Switch>
-				<Citation />
+				<div className='mx-2 px-5'>
+					<Switch>
+						<Route path='/' exact component={Home} />
+						<Route path='/about' exact component={AboutPage} />
+						<Route path='/:contest' component={URLContest} />
+						<Route path='*' component={Error404} />
+					</Switch>
+					<Citation />
+				</div>
 			</Router>
 		</div>
 	);

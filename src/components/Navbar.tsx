@@ -8,23 +8,14 @@ import Home from '../svg/Home.svg';
 export default function Navbar() {
 	const [user] = useAuthState(auth);
 	const [hidden, setHidden] = useState(false);
-
-	const reduceButton = (
-		<button
-			className='text-black mx-3 my-2 px-2 py-4 text-2xl bg-green-400 rounded-lg shadow-lg font-bold'
-			onClick={() => setHidden(true)}
-		>
-			-
-		</button>
-	);
 	return (
 		<>
 			{hidden ? (
 				<div className='sticky left-0 top-0 z-50'>
 					<div className='relative'>
-						<div className='absolute right-0'>
+						<div className='absolute left-0'>
 							<button
-								className='text-black bg-green-400 shadow-lg mx-3 my-2 px-2 py-6 rounded-lg text-2xl font-bold'
+								className='text-black bg-green-400 shadow-lg mx-2 my-3 px-2 py-5 rounded-lg text-2xl font-bold'
 								onClick={() => setHidden(false)}
 							>
 								+
@@ -34,9 +25,17 @@ export default function Navbar() {
 				</div>
 			) : (
 				<div className='sticky left-3 top-3 bg-yellow-400 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
-					<Link to='/about'>
-						<div className='auth'>About</div>
-					</Link>
+					<div className='flex flex-row'>
+						<button
+							className='text-black mx-3 my-2 px-2 py-4 text-2xl bg-green-400 rounded-lg shadow-lg font-bold'
+							onClick={() => setHidden(true)}
+						>
+							-
+						</button>
+						<Link to='/about'>
+							<div className='auth'>About</div>
+						</Link>
+					</div>
 					{user ? (
 						<>
 							<div className='p-4 m-2 text-lg bg-white text-black rounded-xl shadow-sm'>
@@ -49,13 +48,11 @@ export default function Navbar() {
 									</div>
 								</Link>
 								<LogOut />
-								{reduceButton}
 							</div>
 						</>
 					) : (
 						<div className='flex flex-wrap flex-row justify-between'>
 							<LogIn />
-							{reduceButton}
 						</div>
 					)}
 				</div>
