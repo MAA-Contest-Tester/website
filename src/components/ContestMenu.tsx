@@ -79,7 +79,7 @@ export default function ContestMenu(props: { email: string }) {
 							'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
 							' ' +
 							(index === contestType
-								? 'bg-gradient-to-r from-blue-600 to-blue-700 -translate-y-1'
+								? 'bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1'
 								: 'bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg')
 						}
 						key={'MenuBar' + index}
