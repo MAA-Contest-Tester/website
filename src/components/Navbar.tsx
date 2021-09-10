@@ -24,7 +24,7 @@ export default function Navbar() {
 									localStorage.setItem('maatester_navbarmode', 'false');
 								}}
 							>
-								<img src={Plus} className='w-5' />
+								<img src={Plus} className='w-5' alt='expand navbar' />
 							</button>
 						</div>
 					</div>
@@ -39,7 +39,7 @@ export default function Navbar() {
 								localStorage.setItem('maatester_navbarmode', 'true');
 							}}
 						>
-							<img src={Remove} className='w-5' />
+							<img src={Remove} className='w-5' alt='remove navbar' />
 						</button>
 					</div>
 					<Link to='/'>
