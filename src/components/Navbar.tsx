@@ -4,10 +4,13 @@ import { auth, LogIn, LogOut } from './Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import Home from '../svg/Home.svg';
+import Remove from '../svg/Remove.svg';
+import Plus from '../svg/Plus.svg';
 
 export default function Navbar() {
 	const [user] = useAuthState(auth);
-	const [hidden, setHidden] = useState(false);
+	const hiddenState = localStorage.getItem('maatester_navbarmode') === 'true';
+	const [hidden, setHidden] = useState(hiddenState);
 	return (
 		<>
 			{hidden ? (
@@ -15,10 +18,13 @@ export default function Navbar() {
 					<div className='relative'>
 						<div className='absolute left-0'>
 							<button
-								className='text-black bg-blue-600 shadow-lg mx-2 my-3 px-2 py-5 rounded-lg text-2xl font-bold'
-								onClick={() => setHidden(false)}
+								className='text-white bg-yellow-400 shadow-lg mx-3 my-3 px-2 py-5 rounded-lg text-2xl font-bold text-center'
+								onClick={() => {
+									setHidden(false);
+									localStorage.setItem('maatester_navbarmode', 'false');
+								}}
 							>
-								+
+								<img src={Plus} className='w-5' />
 							</button>
 						</div>
 					</div>
@@ -27,10 +33,13 @@ export default function Navbar() {
 				<div className='sticky left-3 top-3 bg-yellow-400 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
 					<div className='flex flex-row'>
 						<button
-							className='text-black mx-3 my-2 px-2 py-4 text-2xl bg-blue-600 rounded-lg shadow-lg font-bold'
-							onClick={() => setHidden(true)}
+							className='text-white mx-1 my-2 px-2 py-4 text-2xl rounded-lg font-bold text-center'
+							onClick={() => {
+								setHidden(true);
+								localStorage.setItem('maatester_navbarmode', 'true');
+							}}
 						>
-							-
+							<img src={Remove} className='w-5' />
 						</button>
 					</div>
 					<Link to='/'>
