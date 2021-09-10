@@ -245,11 +245,11 @@ export default abstract class Contest extends Component<{ name: string }> {
 					<div className='flex flex-wrap flex-row justify-left'>
 						{this.iterationArray.map((number) => (
 							<div
-								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-72 bg-gray-100 flex flex-col md:flex-row'
+								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 flex flex-col md:flex-row'
 								key={number}
 							>
 								<label className='m-2 text-2xl'> {number + 1} </label>
-								<div className='border-none rounded-lg m-2 px-1'>
+								<div className='border-none rounded-lg m-2 px-1 flex flex-row flex-wrap'>
 									{this.renderInputField(number)}
 								</div>
 
