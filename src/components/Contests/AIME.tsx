@@ -53,7 +53,7 @@ export default class AIME extends Contest {
 					});
 				}}
 				className={
-					'w-20 text-xl rounded-lg text-white m-1 p-3 bg-gradient-to-r from-blue-600 to-blue-800 focus:outline-none focus:ring'
+					'w-20 text-xl rounded-full text-white m-1 p-3 bg-gradient-to-r from-blue-400 to-blue-600 focus:outline-none focus:ring'
 				}
 			/>
 		);

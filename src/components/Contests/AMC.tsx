@@ -27,7 +27,7 @@ export default class AMC extends Contest {
 			<>
 				<button
 					className={
-						'rounded-lg m-1 p-3 bg-gradient-to-r text-white' +
+						'rounded-full m-1 p-3 bg-gradient-to-r text-white' +
 						' ' +
 						(letter !== 'Clear'
 							? this.state.answer[number] === letter
