@@ -23,13 +23,13 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 		<Link to={`/${props.name}`}>
 			<div
 				className={
-					'w-56 mx-1 my-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 rounded-xl p-3 text-center' +
+					'w-56 mx-1 my-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 rounded-xl p-3 text-center dark:text-white' +
 					' ' +
 					(props.perfect
-						? 'bg-green-100'
+						? 'bg-green-100 dark:bg-green-600'
 						: props.done
-						? 'bg-yellow-100'
-						: 'bg-gray-100')
+						? 'bg-yellow-100 dark:bg-yellow-600'
+						: 'bg-gray-100 dark:bg-gray-800')
 				}
 			>
 				<div className='text-xl'> {title} </div>
@@ -71,7 +71,7 @@ export default function ContestMenu(props: { email: string }) {
 
 	return (
 		<div className='m-2 p-3'>
-			<h1 className='mx-0 my-2 font-bold'> Contests </h1>
+			<h1 className='mx-0 my-2 font-bold dark:text-white'> Contests </h1>
 			<div className='flex flex-row flex-wrap py-2'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
@@ -94,7 +94,9 @@ export default function ContestMenu(props: { email: string }) {
 			</div>
 			{results.get(contestType)!.map((y: ContestYear) => (
 				<>
-					<h2 className='text-2xl m-2 font-semibold'>{y.year}</h2>
+					<h2 className='text-2xl m-2 font-semibold dark:text-white'>
+						{y.year}
+					</h2>
 					<div className='flex flex-row flex-wrap'>
 						{y.contests.map((s) => (
 							<MenuItem

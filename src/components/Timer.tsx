@@ -84,8 +84,8 @@ export default class Timer extends Component<TimerProps, TimerState> {
 	render() {
 		const body = (
 			<div>
-				<div className='text-2xl font-bold'> Timer </div>
-				<div className='text-2xl'>
+				<div className='text-2xl font-bold dark:text-white'> Timer </div>
+				<div className='text-2xl dark:text-white'>
 					{this.state.time.mins} m {this.state.time.seconds} s
 				</div>
 				<div className='flex'>
@@ -109,13 +109,13 @@ export default class Timer extends Component<TimerProps, TimerState> {
 
 		if (this.state.time.zero()) {
 			return (
-				<div className='bg-red-100 shadow-xl hover:shadow-2xl my-2 mx-3 md:mx-6 p-3 w-96 rounded-xl'>
+				<div className='bg-red-100 dark:bg-red-800 shadow-xl hover:shadow-2xl my-2 mx-3 md:mx-6 p-3 w-96 rounded-xl'>
 					{body}
 				</div>
 			);
 		} else {
 			return (
-				<div className='bg-gray-100 shadow-xl hover:shadow-2xl my-2 mx-3 md:mx-6 p-3 w-96 rounded-xl'>
+				<div className='bg-gray-100 dark:bg-gray-800 shadow-xl hover:shadow-2xl my-2 mx-3 md:mx-6 p-3 w-96 rounded-xl'>
 					{body}
 				</div>
 			);

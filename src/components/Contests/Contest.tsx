@@ -185,7 +185,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 	render() {
 		return (
 			<div className='m-4 p-2'>
-				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold'>
+				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
 					{this.name.split(urlSeparator).join(' ')} ({this.score()})
 				</h1>
 				{perfectScore(this.score()) && (
@@ -223,7 +223,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 					</a>
 
 					<button
-						className='bg-gradient-to-r from-gray-700 to-black font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+						className='bg-gradient-to-r from-gray-700 to-black dark:from-gray-100 dark:to-gray-300 font-semibold text-white dark:text-black text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.updateAnswers}
 					>
@@ -232,23 +232,26 @@ export default abstract class Contest extends Component<{ name: string }> {
 					<textarea
 						rows={4}
 						cols={40}
-						className='border-2 border-black outline-none rounded-lg m-3 p-3'
+						className='border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white'
 						placeholder='Notes Pad for anything involving the contest.'
 						value={this.state.notes || ''}
 						onChange={(e) => this.setState({ notes: e.target.value })}
 					/>
 				</div>
 				<div className='p-3'>
-					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold'>
+					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
 						Answer Sheet
 					</h1>
 					<div className='flex flex-wrap flex-row justify-left'>
 						{this.iterationArray.map((number) => (
 							<div
-								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 flex flex-col md:flex-row'
+								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 dark:bg-gray-800 flex flex-col md:flex-row'
 								key={number}
 							>
-								<label className='m-2 text-2xl'> {number + 1} </label>
+								<label className='m-2 text-2xl dark:text-white'>
+									{' '}
+									{number + 1}{' '}
+								</label>
 								<div className='border-none rounded-lg m-2 px-1 flex flex-row flex-wrap'>
 									{this.renderInputField(number)}
 								</div>
@@ -260,8 +263,10 @@ export default abstract class Contest extends Component<{ name: string }> {
 							</div>
 						))}
 					</div>
-					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl'>
-						<h1 className='font-bold my-2 p-3 mx-0'>Danger Zone</h1>
+					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl dark:bg-gray-800'>
+						<h1 className='font-bold my-2 p-3 mx-0 dark:text-white'>
+							Danger Zone
+						</h1>
 						<div className='flex flex-row flex-wrap'>
 							<button
 								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'

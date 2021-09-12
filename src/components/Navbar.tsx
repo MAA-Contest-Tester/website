@@ -49,7 +49,7 @@ export default function Navbar() {
 					</Link>
 					{user ? (
 						<>
-							<div className='p-4 m-2 text-lg bg-gradient-to-r from-white to-gray-100 text-black rounded-xl shadow-sm'>
+							<div className='p-4 m-2 text-lg bg-gradient-to-r from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 text-black dark:text-white rounded-xl shadow-sm'>
 								<span className='font-bold'>{user.email}</span>
 							</div>
 							<div className='flex flex-wrap flex-row justify-between'>

@@ -7,10 +7,10 @@ import '../index.css';
 
 export function AboutPage() {
 	return (
-		<div className='m-2 p-3'>
-			<h1 className='font-bold text-center text-5xl'>
+		<div className='m-2 p-3 dark:text-white'>
+			<h1 className='font-bold text-center text-5xl dark:text-white'>
 				The MAA{' '}
-				<span className=' text-transparent bg-clip-text bg-blue-700'>
+				<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
 					Contest Tester
 				</span>
 			</h1>
@@ -23,29 +23,29 @@ export function AboutPage() {
 			</div>
 			<div className='m-2 p-3 text-xl text-center'>
 				<h2 className='font-bold text-3xl'>
-					<span className=' text-transparent bg-clip-text bg-blue-700'>
+					<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
 						Support
 					</span>{' '}
 					for all modern non-proof MAA Contests
 				</h2>
 				<div className='m-3 flex justify-center'>
-					<ul className='bg-gray-100 min-w-96 m-2 p-3 rounded-xl text-left'>
+					<ul className='bg-gray-100 dark:bg-gray-800 dark:text-white min-w-96 m-2 p-3 rounded-xl text-left'>
 						<li>
-							<span className=' text-transparent bg-clip-text bg-blue-700 font-bold'>
+							<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500 font-bold'>
 								{' '}
 								All AMC 8{' '}
 							</span>{' '}
 							Contests (1999 -)
 						</li>
 						<li>
-							<span className=' text-transparent bg-clip-text bg-blue-700 font-bold'>
+							<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500 font-bold'>
 								{' '}
 								All AMC 10/12{' '}
 							</span>{' '}
 							Contests (2000 -)
 						</li>
 						<li>
-							<span className=' text-transparent bg-clip-text bg-blue-700 font-bold'>
+							<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500 font-bold'>
 								{' '}
 								All AIME{' '}
 							</span>{' '}
@@ -56,13 +56,13 @@ export function AboutPage() {
 			</div>
 			<div className='m-2 p-3 text-xl text-center'>
 				<h2 className='font-bold text-3xl'>
-					<span className=' text-transparent bg-clip-text bg-blue-700'>
+					<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
 						Automated
 					</span>{' '}
 					Contest Grading
 				</h2>
 				<div className='m-3 flex justify-center'>
-					<div className='bg-gray-100 w-96 m-2 p-3 rounded-xl text-left'>
+					<div className='bg-gray-100 dark:bg-gray-800 dark:text-white w-96 m-2 p-3 rounded-xl text-left'>
 						The site uses a firebase function to scrape data from the AOPS
 						answer key and parses the answers out with a regular expression.
 					</div>

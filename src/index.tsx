@@ -14,7 +14,7 @@ function URLContest({ match: { params } }: { match: { params: any } }) {
 
 function App() {
 	return (
-		<div>
+		<div className='min-w-screen min-h-screen'>
 			<Router>
 				<Navbar />
 				<div className='mx-2 px-5'>
