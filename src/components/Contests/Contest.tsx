@@ -263,7 +263,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 							</div>
 						))}
 					</div>
-					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl dark:bg-gray-800'>
+					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl dark:bg-gray-800 p-3'>
 						<h1 className='font-bold my-2 p-3 mx-0 dark:text-white'>
 							Danger Zone
 						</h1>
