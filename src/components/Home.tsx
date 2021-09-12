@@ -16,8 +16,9 @@ export function AboutPage() {
 			</h1>
 			<div className='flex flex-row flex-wrap justify-center'>
 				<div className='m-2 p-3 text-xl max-w-2xl'>
-					A tool designed to help you achieve your math contest goals by
-					automatically <span className='font-bold'> recording</span> and{' '}
+					An integrated testing environment designed to help you achieve your
+					math contest goals by automatically{' '}
+					<span className='font-bold'> recording</span> and{' '}
 					<span className='font-bold'>grading</span> practice contests
 				</div>
 			</div>

@@ -105,6 +105,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 				return x;
 			});
 			const graded = await this.grade(this.url, updatedAnswer);
+			this.setState({ correct: graded });
 			await addExam(
 				this.state.email!,
 				this.name,
@@ -113,7 +114,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 				this.score(),
 				this.state.notes
 			);
-			this.setState({ correct: graded, loading: false, saved: true });
+			this.setState({ loading: false, saved: true });
 		} catch (e) {
 			this.setState({
 				errors: 'Oops! Looks like the API or AOPS is down.',
