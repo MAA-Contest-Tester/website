@@ -66,3 +66,8 @@ export const perfectScore = (s: string) => {
 	const [a, b] = s.split('/').map((x) => parseInt(x));
 	return !isNaN(a) && a === b;
 };
+
+export const correctAnswers = (graded: AnswerState[]) =>
+	graded
+		.map((x) => (x === 1 ? 1 : 0))
+		.reduce((a: number, b: number) => a + b, 0);

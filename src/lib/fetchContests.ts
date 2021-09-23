@@ -45,3 +45,14 @@ export function AMCExists(name: string) {
 export function AIMEExists(name: string) {
 	return existsInCategory(name, AIMEContests);
 }
+
+export function numberOfProblems() {
+	const count = (problems: number, contest: ContestYear[]) =>
+		problems * contest.map((x) => x.contests.length).reduce((a, b) => a + b, 0);
+	return (
+		count(25, AMC8Contests) +
+		count(25, AMC10Contests) +
+		count(25, AMC12Contests) +
+		count(15, AIMEContests)
+	);
+}

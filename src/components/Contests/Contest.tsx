@@ -219,7 +219,7 @@ export default abstract class Contest extends Component<{ name: string }> {
 						// prevent concurrent API calls
 					>
 						<button className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
-							Go to <br /> Contest
+							Problems
 						</button>
 					</a>
 

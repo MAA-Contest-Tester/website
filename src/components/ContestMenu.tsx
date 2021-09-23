@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getAllAMC, getAllAIME, ContestYear } from '../lib/fetchContests';
 import { Link } from 'react-router-dom';
 import { getExamsSolved } from '../lib/user_db';
-import { perfectScore } from '../lib/grade';
+import { perfectScore, correctAnswers } from '../lib/grade';
+import StatusBar from './StatusBar';
 
 enum ContestMenuType {
 	AMC8,
@@ -47,14 +48,18 @@ export default function ContestMenu(props: { email: string }) {
 			? parseInt(localStorage.getItem('maatester_selected')!)
 			: ContestMenuType.AMC8
 	);
+
 	const [solved, setSolved] = useState(new Set<string>());
 	const [perfect, setPerfect] = useState(new Set<string>());
+	const [problemsSolved, setProblemsSolved] = useState(0);
 
 	useEffect(() => {
 		getExamsSolved(props.email)
 			.then((result) => {
 				const s: Set<string> = new Set();
 				const p: Set<string> = new Set();
+				// number of problems solved
+				let sol = 0;
 				result.forEach((d: any) => {
 					if (d.exam) {
 						s.add(d.exam);
@@ -62,9 +67,13 @@ export default function ContestMenu(props: { email: string }) {
 							p.add(d.exam);
 						}
 					}
+					if (d.correct) {
+						sol += correctAnswers(d.correct);
+					}
 				});
 				setSolved(s);
 				setPerfect(p);
+				setProblemsSolved(sol);
 			})
 			.catch((e) => console.log('error', e));
 	}, [props.email]);
@@ -72,6 +81,7 @@ export default function ContestMenu(props: { email: string }) {
 	return (
 		<div className='m-2 p-3'>
 			<h1 className='mx-0 my-2 font-bold dark:text-white'> Contests </h1>
+			<StatusBar solved={problemsSolved} />
 			<div className='flex flex-row flex-wrap py-2'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
