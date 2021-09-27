@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { numberOfProblems } from '../lib/fetchContests';
+import { Multipliers, Multiplier } from '../lib/grade';
 
 const problems = numberOfProblems();
 
@@ -10,15 +11,15 @@ type Level = {
 
 const levels: Level[] = [
 	{ min: 0, message: <span className='text-gray-400'> Noob </span> },
-	{ min: 50, message: <span className='text-green-400'> Apprentice </span> },
-	{ min: 200, message: <span className='text-blue-400'> Officer </span> },
-	{ min: 600, message: <span className='text-yellow-400'> Master </span> },
+	{ min: 100, message: <span className='text-green-400'> Apprentice </span> },
+	{ min: 600, message: <span className='text-blue-400'> Officer </span> },
+	{ min: 1000, message: <span className='text-yellow-400'> Master </span> },
 	{
-		min: 1500,
+		min: 2000,
 		message: <span className='text-red-400'> Supreme Master </span>,
 	},
 	{
-		min: 3000,
+		min: 4000,
 		message: (
 			<span className='text-red-400'>
 				<span className='dark:text-white text-black'>G</span>od Mode{' '}
@@ -27,7 +28,7 @@ const levels: Level[] = [
 	},
 ];
 
-export default function StatusBar(props: { solved: number }) {
+export default function StatusBar(props: { solved: number; score: number }) {
 	const percentage = `${((props.solved / problems) * 100).toPrecision(3)}%`;
 	let message = null;
 	levels.forEach((x: Level) => {
@@ -38,7 +39,7 @@ export default function StatusBar(props: { solved: number }) {
 	return (
 		<div className='dark:bg-gray-800 bg-gray-100 dark:text-white text-black m-2 p-3 rounded-xl shadow-lg font-bold'>
 			<div className='text-green-700 dark:text-green-300 m-2 text-lg'>
-				You have solved {props.solved} problems!
+				You have {props.score} points
 			</div>
 			<div className='bg-gray-100 dark:bg-gray-800 dark:text-white m-2 text-lg'>
 				Level: {message}{' '}
@@ -63,6 +64,20 @@ export default function StatusBar(props: { solved: number }) {
 						{levels.map((x: Level) => (
 							<div>
 								{x.message}: {x.min}{' '}
+							</div>
+						))}
+					</div>
+					<div>
+						Points per problem per contest
+						<br />
+						<br />
+						{Multipliers.map((m: Multiplier) => (
+							<div>
+								{m.name}:{' '}
+								<span className='dark:text-blue-400 text-blue-700'>
+									{m.multiplier}
+								</span>{' '}
+								point{m.multiplier !== 1 ? 's' : null} per problem
 							</div>
 						))}
 					</div>

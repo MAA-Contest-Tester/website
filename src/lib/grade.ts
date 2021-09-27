@@ -67,7 +67,36 @@ export const perfectScore = (s: string) => {
 	return !isNaN(a) && a === b;
 };
 
+// multipliers for AMC 8, 10, 12, and AIME.
+// first value is a regex, next is a multiplier.
+export class Multiplier {
+	regex: RegExp;
+	multiplier: number;
+	name: string;
+	constructor(regex: RegExp, multiplier: number, name: string) {
+		this.regex = regex;
+		this.multiplier = multiplier;
+		this.name = name;
+	}
+}
+export const Multipliers: Multiplier[] = [
+	new Multiplier(/AIME/, 3, 'AIME'),
+	new Multiplier(/AMC_12/, 2, 'AMC 12'),
+	new Multiplier(/AMC_10/, 2, 'AMC 10'),
+	new Multiplier(/AMC_8/, 1, 'AMC 8'),
+];
+
 export const correctAnswers = (graded: AnswerState[]) =>
 	graded
 		.map((x) => (x === 1 ? 1 : 0))
 		.reduce((a: number, b: number) => a + b, 0);
+
+export const getNetScore = (graded: AnswerState[], examName: string) => {
+	let res: number = 0;
+	Multipliers.forEach((x: Multiplier) => {
+		if (x.regex.test(examName)) {
+			res = x.multiplier;
+		}
+	});
+	return res * correctAnswers(graded);
+};

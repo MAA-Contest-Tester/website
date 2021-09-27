@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllAMC, getAllAIME, ContestYear } from '../lib/fetchContests';
 import { Link } from 'react-router-dom';
 import { getExamsSolved } from '../lib/user_db';
-import { perfectScore, correctAnswers } from '../lib/grade';
+import { perfectScore, correctAnswers, getNetScore } from '../lib/grade';
 import StatusBar from './StatusBar';
 
 enum ContestMenuType {
@@ -52,6 +52,7 @@ export default function ContestMenu(props: { email: string }) {
 	const [solved, setSolved] = useState(new Set<string>());
 	const [perfect, setPerfect] = useState(new Set<string>());
 	const [problemsSolved, setProblemsSolved] = useState(0);
+	const [netScore, setNetScore] = useState(0);
 
 	useEffect(() => {
 		getExamsSolved(props.email)
@@ -59,7 +60,8 @@ export default function ContestMenu(props: { email: string }) {
 				const s: Set<string> = new Set();
 				const p: Set<string> = new Set();
 				// number of problems solved
-				let sol = 0;
+				let solved = 0;
+				let score = 0;
 				result.forEach((d: any) => {
 					if (d.exam) {
 						s.add(d.exam);
@@ -68,12 +70,14 @@ export default function ContestMenu(props: { email: string }) {
 						}
 					}
 					if (d.correct) {
-						sol += correctAnswers(d.correct);
+						solved += correctAnswers(d.correct);
+						score += getNetScore(d.correct, d.exam);
 					}
 				});
 				setSolved(s);
 				setPerfect(p);
-				setProblemsSolved(sol);
+				setProblemsSolved(solved);
+				setNetScore(score);
 			})
 			.catch((e) => console.log('error', e));
 	}, [props.email]);
@@ -81,8 +85,8 @@ export default function ContestMenu(props: { email: string }) {
 	return (
 		<div className='m-2 p-3'>
 			<h1 className='mx-0 my-2 font-bold dark:text-white'> Contests </h1>
-			<StatusBar solved={problemsSolved} />
-			<div className='flex flex-row flex-wrap py-2'>
+			<StatusBar solved={problemsSolved} score={netScore} />
+			<div className='flex flex-row flex-wrap py-2 justify-center sm:justify-start'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 					<button
 						className={
