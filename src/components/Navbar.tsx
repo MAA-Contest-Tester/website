@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Home from '../svg/Home.svg';
 import Remove from '../svg/Remove.svg';
 import Plus from '../svg/Plus.svg';
+import Info from '../svg/Info.svg';
 
 export default function Navbar() {
 	const [user] = useAuthState(auth);
@@ -58,11 +59,21 @@ export default function Navbar() {
 										<img src={Home} className='w-7' alt='Home Logo' />
 									</div>
 								</Link>
+								<Link to='/info'>
+									<div className='auth'>
+										<img src={Info} className='w-7' alt='Home Logo' />
+									</div>
+								</Link>
 								<LogOut />
 							</div>
 						</>
 					) : (
 						<div className='flex flex-wrap flex-row justify-between'>
+							<Link to='/info'>
+								<div className='auth'>
+									<img src={Info} className='w-7' alt='Home Logo' />
+								</div>
+							</Link>
 							<LogIn />
 						</div>
 					)}

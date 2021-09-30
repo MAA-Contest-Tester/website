@@ -49,10 +49,23 @@ export default function ContestMenu(props: { email: string }) {
 			: ContestMenuType.AMC8
 	);
 
-	const [solved, setSolved] = useState(new Set<string>());
-	const [perfect, setPerfect] = useState(new Set<string>());
-	const [problemsSolved, setProblemsSolved] = useState(0);
-	const [netScore, setNetScore] = useState(0);
+	// take from localstorage cache
+	const [solved, setSolved] = useState(
+		new Set<string>(
+			JSON.parse(localStorage.getItem('maatester_solvedset') || '[]') || []
+		)
+	);
+	const [perfect, setPerfect] = useState(
+		new Set<string>(
+			JSON.parse(localStorage.getItem('maatester_perfectset') || '[]') || []
+		)
+	);
+	const [problemsSolved, setProblemsSolved] = useState(
+		parseInt(localStorage.getItem('maatester_solvednumber') || '0') || 0
+	);
+	const [netScore, setNetScore] = useState(
+		parseInt(localStorage.getItem('maatester_points') || '0') || 0
+	);
 
 	useEffect(() => {
 		getExamsSolved(props.email)
@@ -78,6 +91,17 @@ export default function ContestMenu(props: { email: string }) {
 				setPerfect(p);
 				setProblemsSolved(solved);
 				setNetScore(score);
+				// cache to localstorage
+				localStorage.setItem('maatester_solvednumber', solved.toString());
+				localStorage.setItem('maatester_points', score.toString());
+				localStorage.setItem(
+					'maatester_perfectset',
+					JSON.stringify(Array.from(p.values()))
+				);
+				localStorage.setItem(
+					'maatester_solvedset',
+					JSON.stringify(Array.from(s.values()))
+				);
 			})
 			.catch((e) => console.log('error', e));
 	}, [props.email]);
@@ -111,7 +135,7 @@ export default function ContestMenu(props: { email: string }) {
 					<h2 className='text-2xl m-2 font-semibold dark:text-white'>
 						{y.year}
 					</h2>
-					<div className='flex flex-row flex-wrap'>
+					<div className='flex flex-row flex-wrap justify-center sm:justify-start'>
 						{y.contests.map((s) => (
 							<MenuItem
 								name={s}

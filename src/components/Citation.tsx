@@ -23,6 +23,8 @@ export default function Citation() {
 			<Ref link='https://tailwindcss.com' name='Tailwind CSS' />. Source code is
 			publicly available on{' '}
 			<Ref link='https://github.com/junikimm717/MAA_Tester' name='Github' />.
+			<br />
+			<br />© 2021-2021 Juni C. Kim and Tei D. Kim
 		</div>
 	);
 }
