@@ -7,6 +7,7 @@ import Home from '../svg/Home.svg';
 import Remove from '../svg/Remove.svg';
 import Plus from '../svg/Plus.svg';
 import Info from '../svg/Info.svg';
+import Logo from '../svg/Logo.svg';
 
 export default function Navbar() {
 	const [user] = useAuthState(auth);
@@ -43,17 +44,19 @@ export default function Navbar() {
 							<img src={Remove} className='w-5' alt='remove navbar' />
 						</button>
 					</div>
-					<Link to='/'>
-						<div className='font-bold text-center text-2xl m-2 p-1 dark:text-white'>
-							The MAA Contest Tester
-						</div>
-					</Link>
+
 					{user ? (
 						<>
 							<div className='p-4 m-2 text-lg bg-gradient-to-r from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 text-black dark:text-white rounded-xl shadow-sm'>
 								<span className='font-bold'>{user.email}</span>
 							</div>
+
 							<div className='flex flex-wrap flex-row justify-between'>
+								<Link to='/'>
+									<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-3 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
+										<img src={Logo} className='w-9' alt='MAA Tester Logo' />
+									</div>
+								</Link>
 								<Link to='/home'>
 									<div className='auth'>
 										<img src={Home} className='w-7' alt='Home Logo' />
@@ -69,6 +72,11 @@ export default function Navbar() {
 						</>
 					) : (
 						<div className='flex flex-wrap flex-row justify-between'>
+							<Link to='/'>
+								<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-3 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
+									<img src={Logo} className='w-9' alt='MAA Tester Logo' />
+								</div>
+							</Link>
 							<Link to='/info'>
 								<div className='auth'>
 									<img src={Info} className='w-7' alt='Home Logo' />
