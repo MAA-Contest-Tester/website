@@ -3,7 +3,7 @@ import React from 'react';
 function ContestInfo(props: { name: string; children?: React.ReactNode }) {
 	return (
 		<div className='flex flex-row flex-wrap justify-center my-5'>
-			<div className='m-2 p-5 bg-gray-100 dark:bg-gray-800 dark:text-white font-bold rounded-xl'>
+			<div className='m-2 p-5 bg-gray-100 dark:bg-gray-800 dark:text-white font-bold rounded-xl max-w-4xl'>
 				<h2 className='font-bold text-2xl text-center text-blue-700 dark:text-blue-500'>
 					{props.name}
 				</h2>

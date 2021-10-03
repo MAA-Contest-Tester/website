@@ -37,7 +37,7 @@ export default function StatusBar(props: { solved: number; score: number }) {
 
 	const [verbose, setVerbose] = useState(false);
 	return (
-		<div className='dark:bg-gray-800 bg-gray-100 dark:text-white text-black m-2 p-3 rounded-xl shadow-lg font-bold'>
+		<div className='dark:bg-gray-800 bg-gray-100 dark:text-white text-black m-2 p-3 rounded-xl shadow-lg font-bold max-w-5xl'>
 			<div className='text-green-700 dark:text-green-300 m-2 text-lg'>
 				You have {props.score} points
 			</div>
@@ -60,7 +60,7 @@ export default function StatusBar(props: { solved: number; score: number }) {
 			{verbose ? (
 				<div className='m-2 flex flex-row flex-wrap justify-between gap-4'>
 					<div>
-						Minimum Problems Per Level
+						Minimum Score Per Level
 						{levels.map((x: Level) => (
 							<div>
 								{x.message}: {x.min}{' '}
