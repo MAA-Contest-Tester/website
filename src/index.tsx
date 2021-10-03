@@ -21,7 +21,7 @@ function App() {
 				<div className='mx-2 px-5'>
 					<Switch>
 						<Route path='/' exact component={AboutPage} />
-						<Route path='/home' exact component={Home} />
+						<Route path='/dashboard' exact component={Home} />
 						<Route path='/info' exact component={Info} />
 						<Route path='/:contest' component={URLContest} />
 						<Route path='*' component={Error404} />

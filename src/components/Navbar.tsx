@@ -57,7 +57,7 @@ export default function Navbar() {
 										<img src={Logo} className='w-9' alt='MAA Tester Logo' />
 									</div>
 								</Link>
-								<Link to='/home'>
+								<Link to='/dashboard'>
 									<div className='auth'>
 										<img src={Home} className='w-7' alt='Home Logo' />
 									</div>
