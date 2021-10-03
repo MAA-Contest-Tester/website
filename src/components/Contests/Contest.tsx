@@ -193,118 +193,114 @@ export default abstract class Contest extends Component<ContestProps> {
 
 	render() {
 		return (
-			<div className='content-center'>
-				<div
-					className={
-						'm-3 p-1 max-w-7xl' +
-						' ' +
-						(this.preview ? 'border-2 border-black rounded-lg' : null)
-					}
-				>
-					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
-						{this.name.split(urlSeparator).join(' ')} ({this.score()})
+			<div
+				className={
+					'm-3 p-1 max-w-7xl' +
+					' ' +
+					(this.preview ? 'border-2 border-black rounded-lg' : null)
+				}
+			>
+				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
+					{this.name.split(urlSeparator).join(' ')} ({this.score()})
+				</h1>
+				{perfectScore(this.score()) && (
+					<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
+						Perfect Score
 					</h1>
-					{perfectScore(this.score()) && (
-						<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
-							Perfect Score
-						</h1>
-					)}
-					{this.state.loading && (
-						<img src={Loading} className='m-2 w-48' alt='loading svg' />
-					)}
-					{this.state.errors && (
-						<div className='text-red-500 m-2 p-3 text-lg'>
-							Error: {this.state.errors}
-						</div>
-					)}
-					<div className='flex flex-row flex-wrap justify-center'>
-						<Timer mins={this.timeGiven()} />
-						{!this.preview ? (
-							<button
-								className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
-								// prevent concurrent API calls
-								onClick={this.state.loading ? () => 0 : this.saveAnswers}
-							>
-								Save{!this.state.saved ? '*' : null}
-							</button>
-						) : null}
-						<a
-							href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
-							target='_blank'
-							rel='noreferrer'
-							className='m-3'
-							// prevent concurrent API calls
-						>
-							<button className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
-								Problems
-							</button>
-						</a>
-
-						<button
-							className='bg-gradient-to-r from-gray-700 to-black dark:from-gray-100 dark:to-gray-300 font-semibold text-white dark:text-black text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
-							// prevent concurrent API calls
-							onClick={this.state.loading ? () => 0 : this.updateAnswers}
-						>
-							Grade
-						</button>
-						<textarea
-							rows={4}
-							cols={30}
-							className='border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white'
-							placeholder='Notes Pad for anything involving the contest.'
-							value={this.state.notes || ''}
-							onChange={(e) => this.setState({ notes: e.target.value })}
-						/>
+				)}
+				{this.state.loading && (
+					<img src={Loading} className='m-2 w-48' alt='loading svg' />
+				)}
+				{this.state.errors && (
+					<div className='text-red-500 m-2 p-3 text-lg'>
+						Error: {this.state.errors}
 					</div>
-					<div className='p-3'>
-						<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
-							Answer Sheet
-						</h1>
-						<div className='flex flex-wrap flex-row justify-left'>
-							{this.iterationArray.map((number) => (
-								<div
-									className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 dark:bg-gray-800 flex flex-col md:flex-row'
-									key={number}
-								>
-									<label className='m-2 text-2xl dark:text-white'>
-										{' '}
-										{number + 1}{' '}
-									</label>
-									<div className='border-none rounded-lg m-2 px-1 flex flex-row flex-wrap'>
-										{this.renderInputField(number)}
-									</div>
+				)}
+				<div className='flex flex-row flex-wrap justify-center'>
+					<Timer mins={this.timeGiven()} />
+					{!this.preview ? (
+						<button
+							className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+							// prevent concurrent API calls
+							onClick={this.state.loading ? () => 0 : this.saveAnswers}
+						>
+							Save{!this.state.saved ? '*' : null}
+						</button>
+					) : null}
+					<a
+						href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
+						target='_blank'
+						rel='noreferrer'
+						className='m-3'
+						// prevent concurrent API calls
+					>
+						<button className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
+							Problems
+						</button>
+					</a>
 
-									{getAnswerStateEl(
-										this.state.correct[number],
-										this.state.answer[number]
-									)}
+					<button
+						className='bg-gradient-to-r from-gray-700 to-black dark:from-gray-100 dark:to-gray-300 font-semibold text-white dark:text-black text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+						// prevent concurrent API calls
+						onClick={this.state.loading ? () => 0 : this.updateAnswers}
+					>
+						Grade
+					</button>
+					<textarea
+						rows={4}
+						cols={30}
+						className='border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white'
+						placeholder='Notes Pad for anything involving the contest.'
+						value={this.state.notes || ''}
+						onChange={(e) => this.setState({ notes: e.target.value })}
+					/>
+				</div>
+				<div className='p-3'>
+					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
+						Answer Sheet
+					</h1>
+					<div className='flex flex-wrap flex-row justify-left'>
+						{this.iterationArray.map((number) => (
+							<div
+								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 dark:bg-gray-800 flex flex-col md:flex-row'
+								key={number}
+							>
+								<label className='m-2 text-2xl dark:text-white'>
+									{' '}
+									{number + 1}{' '}
+								</label>
+								<div className='border-none rounded-lg m-2 px-1 flex flex-row flex-wrap'>
+									{this.renderInputField(number)}
 								</div>
-							))}
-						</div>
-						<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl dark:bg-gray-800 p-3'>
-							<h1 className='font-bold my-2 p-3 mx-0 dark:text-white'>
-								Danger Zone
-							</h1>
-							<div className='flex flex-row flex-wrap'>
+
+								{getAnswerStateEl(
+									this.state.correct[number],
+									this.state.answer[number]
+								)}
+							</div>
+						))}
+					</div>
+					<div className='min-w-96 bg-gray-100 rounded-xl mx-2 my-7 shadow-xl dark:bg-gray-800 p-3'>
+						<h1 className='font-bold my-2 p-3 mx-0 dark:text-white'>
+							Danger Zone
+						</h1>
+						<div className='flex flex-row flex-wrap'>
+							<button
+								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
+								// prevent concurrent API calls
+								onClick={this.state.loading ? () => 0 : this.clearAnswers}
+							>
+								Clear Answers Only
+							</button>
+							{!this.preview ? (
 								<button
 									className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 									// prevent concurrent API calls
-									onClick={this.state.loading ? () => 0 : this.clearAnswers}
+									onClick={this.state.loading ? () => 0 : this.clearEverything}
 								>
-									Clear Answers Only
+									Wipe Exam from Database
 								</button>
-								{!this.preview ? (
-									<button
-										className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
-										// prevent concurrent API calls
-										onClick={
-											this.state.loading ? () => 0 : this.clearEverything
-										}
-									>
-										Wipe Exam from Database
-									</button>
-								) : null}
-							</div>
+							) : null}
 						</div>
 					</div>
 				</div>

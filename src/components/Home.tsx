@@ -77,14 +77,16 @@ export function AboutPage() {
 					Preview
 				</div>
 				<div className='text-2xl'>
-					*Log in/Register to track your progress and access{' '}
+					*Log in/Register to record your progress and access{' '}
 					<span className='text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
-						150+
+						over 150
 					</span>{' '}
 					contests
 				</div>
 			</h1>
-			<AMC preview={true} name='2021_AMC_10A'></AMC>
+			<div className='md:flex md:justify-center'>
+				<AMC preview={true} name='2021_AMC_10A'></AMC>
+			</div>
 		</>
 	);
 }
