@@ -193,12 +193,12 @@ export default abstract class Contest extends Component<ContestProps> {
 
 	render() {
 		return (
-			<div className='flex justify-center'>
+			<div className='content-center'>
 				<div
 					className={
-						'm-4 p-2 max-w-7xl' +
+						'm-3 p-1 max-w-7xl' +
 						' ' +
-						(this.preview ? 'border-2 border-black rounded-2xl' : '')
+						(this.preview ? 'border-2 border-black rounded-lg' : null)
 					}
 				>
 					<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
@@ -249,7 +249,7 @@ export default abstract class Contest extends Component<ContestProps> {
 						</button>
 						<textarea
 							rows={4}
-							cols={40}
+							cols={30}
 							className='border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white'
 							placeholder='Notes Pad for anything involving the contest.'
 							value={this.state.notes || ''}
