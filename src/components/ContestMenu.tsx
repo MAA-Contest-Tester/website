@@ -108,7 +108,7 @@ export default function ContestMenu(props: { email: string }) {
 
 	return (
 		<div className='m-2 p-3'>
-			<h1 className='mx-0 my-2 font-bold dark:text-white'> Contests </h1>
+			<h1 className='mx-0 my-2 font-bold dark:text-white'> Dashboard </h1>
 			<StatusBar solved={problemsSolved} score={netScore} />
 			<div className='flex flex-row flex-wrap py-2 justify-center sm:justify-start'>
 				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
