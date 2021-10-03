@@ -2,14 +2,18 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './Firebase';
 import ContestMenu from './ContestMenu';
-import AMC from './Contests/AMC';
 import { Error403 } from './Errors';
 import '../index.css';
+import { Link } from 'react-router-dom';
+import Logo from '../svg/Logo.svg';
 
 export function AboutPage() {
 	return (
 		<>
 			<div className='m-2 p-3 dark:text-white'>
+				<div className='text-center'>
+					<img src={Logo} alt='Logo' className='w-20 mx-5 inline' />
+				</div>
 				<h1 className='font-bold text-center text-5xl dark:text-white'>
 					The MAA{' '}
 					<span className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
@@ -72,20 +76,12 @@ export function AboutPage() {
 					</div>
 				</div>
 			</div>
-			<h1 className='font-bold text-center text-5xl dark:text-white'>
-				<div className=' text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
-					Preview
-				</div>
-				<div className='text-2xl'>
-					*Log in/Register to record your progress and access{' '}
-					<span className='text-transparent bg-clip-text bg-blue-700 dark:bg-blue-500'>
-						over 150
-					</span>{' '}
-					contests
-				</div>
-			</h1>
-			<div className='md:flex md:justify-center'>
-				<AMC preview={true} name='2021_AMC_10A'></AMC>
+			<div className='m-2 p-3 text-xl text-center'>
+				<Link to='/preview'>
+					<button className='bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 m-2 text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
+						Preview
+					</button>
+				</Link>
 			</div>
 		</>
 	);

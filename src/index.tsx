@@ -8,6 +8,7 @@ import Contest from './components/getContest';
 import { Error404 } from './components/Errors';
 import Citation from './components/Citation';
 import Info from './components/Info';
+import Preview from './components/Preview';
 
 function URLContest({ match: { params } }: { match: { params: any } }) {
 	return <Contest name={params.contest} />;
@@ -22,6 +23,7 @@ function App() {
 					<Switch>
 						<Route path='/' exact component={AboutPage} />
 						<Route path='/dashboard' exact component={Home} />
+						<Route path='/preview' exact component={Preview} />
 						<Route path='/info' exact component={Info} />
 						<Route path='/:contest' component={URLContest} />
 						<Route path='*' component={Error404} />

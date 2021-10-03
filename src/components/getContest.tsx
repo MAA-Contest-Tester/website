@@ -31,9 +31,10 @@ const getAIME = (props: string) => {
 	}
 };
 
-export default function Contest(props: { name: string }) {
+export default function Contest(props: { name: string; preview?: boolean }) {
 	const [user] = useAuthState(auth);
-	if (!user) {
+	const preview = props.preview ? props.preview : false;
+	if (!user && !preview) {
 		return <Error403 />;
 	}
 	if (props.name.match(/AMC_8/)) {

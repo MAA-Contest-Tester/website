@@ -13,8 +13,6 @@ import {
 	signOut,
 } from 'firebase/auth';
 
-import { useAuthState } from 'react-firebase-hooks/auth';
-
 import GoogleLogo from '../svg/Google.svg';
 
 // Your web app's Firebase configuration
@@ -32,8 +30,7 @@ export function LogIn() {
 			await signInWithRedirect(auth, provider);
 		} catch (e) {}
 	};
-	const [user] = useAuthState(auth);
-	return !user ? (
+	return (
 		<>
 			<button
 				className='auth'
@@ -42,12 +39,12 @@ export function LogIn() {
 				}}
 			>
 				<div className='flex flex-row gap-1'>
-					<span> Log in/Register with </span>
+					<span> Log in with </span>
 					<img src={GoogleLogo} className='w-5' alt='google logo' />
 				</div>
 			</button>
 		</>
-	) : null;
+	);
 }
 
 export function LogOut() {
