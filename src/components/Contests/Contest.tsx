@@ -103,6 +103,7 @@ export default abstract class Contest extends Component<ContestProps> {
 		}
 	}
 
+	// callback for updating answers.
 	updateAnswers = async () => {
 		try {
 			this.setState({ loading: true });
@@ -111,18 +112,9 @@ export default abstract class Contest extends Component<ContestProps> {
 				return x;
 			});
 			const graded = await this.grade(this.url, updatedAnswer);
-			this.setState({ correct: graded });
-			if (!this.preview) {
-				await addExam(
-					this.state.email!,
-					this.name,
-					updatedAnswer,
-					graded,
-					this.score(),
-					this.state.notes
-				);
-			}
-			this.setState({ loading: false, saved: true });
+			this.setState({ correct: graded, loading: false });
+			if (!this.preview) this.setState({ saved: false });
+			this.saveAnswers();
 		} catch (e) {
 			this.setState({
 				errors: 'Oops! Looks like the API or AOPS is down.',
@@ -132,21 +124,25 @@ export default abstract class Contest extends Component<ContestProps> {
 		}
 	};
 
+	// callback to automatically save answers to firestore.
 	saveAnswers = async () => {
 		try {
-			this.setState({ loading: true });
-			await addExam(
-				this.state.email!,
-				this.name,
-				this.state.answer,
-				this.state.correct,
-				this.score(),
-				this.state.notes
-			);
-			this.setState({ loading: false, saved: true });
+			if (!this.preview) {
+				await addExam(
+					this.state.email!,
+					this.name,
+					this.state.answer,
+					this.state.correct,
+					this.score(),
+					this.state.notes
+				);
+			}
 		} catch (e) {
-			this.setState({ errors: 'DB might be down.', loading: false });
+			this.setState({ errors: 'DB might be down.' });
 			console.error('error', e);
+		}
+		if (!this.preview) {
+			this.setState({ saved: true });
 		}
 	};
 
@@ -155,9 +151,6 @@ export default abstract class Contest extends Component<ContestProps> {
 			_.isEqual(this.state.answer, this.defaultAnswer) &&
 			_.isEqual(this.state.correct, this.defaultCorrect)
 		) {
-			this.setState({
-				saved: true,
-			});
 			return;
 		}
 		this.setState({
@@ -165,6 +158,7 @@ export default abstract class Contest extends Component<ContestProps> {
 			correct: this.defaultCorrect,
 		});
 		this.setState({ saved: false });
+		this.saveAnswers();
 	};
 
 	clearEverything = async () => {
@@ -187,7 +181,6 @@ export default abstract class Contest extends Component<ContestProps> {
 	beforeunload = (e: Event) => {
 		if (!this.state.saved) {
 			e.preventDefault();
-			e.returnValue = true;
 		}
 	};
 
@@ -201,7 +194,8 @@ export default abstract class Contest extends Component<ContestProps> {
 				}
 			>
 				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
-					{this.name.split(urlSeparator).join(' ')} ({this.score()})
+					{this.name.split(urlSeparator).join(' ')} ({this.score()}){' '}
+					{!this.state.saved ? '*' : null}
 				</h1>
 				{perfectScore(this.score()) && (
 					<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
@@ -218,15 +212,6 @@ export default abstract class Contest extends Component<ContestProps> {
 				)}
 				<div className='flex flex-row flex-wrap justify-center'>
 					<Timer mins={this.timeGiven()} />
-					{!this.preview ? (
-						<button
-							className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
-							// prevent concurrent API calls
-							onClick={this.state.loading ? () => 0 : this.saveAnswers}
-						>
-							Save{!this.state.saved ? '*' : null}
-						</button>
-					) : null}
 					<a
 						href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
 						target='_blank'
@@ -252,7 +237,10 @@ export default abstract class Contest extends Component<ContestProps> {
 						className='border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white'
 						placeholder='Notes Pad for anything involving the contest.'
 						value={this.state.notes || ''}
-						onChange={(e) => this.setState({ notes: e.target.value })}
+						onChange={async (e) => {
+							await this.setState({ notes: e.target.value, saved: false });
+							this.saveAnswers();
+						}}
 					/>
 				</div>
 				<div className='p-3'>
@@ -288,17 +276,19 @@ export default abstract class Contest extends Component<ContestProps> {
 							<button
 								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
-								onClick={this.state.loading ? () => 0 : this.clearAnswers}
+								onClick={this.state.loading ? undefined : this.clearAnswers}
 							>
-								Clear Answers Only
+								Clear Answers
 							</button>
 							{!this.preview ? (
 								<button
 									className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 									// prevent concurrent API calls
-									onClick={this.state.loading ? () => 0 : this.clearEverything}
+									onClick={
+										this.state.loading ? undefined : this.clearEverything
+									}
 								>
-									Wipe Exam from Database
+									Clear Answers + Unmark Exam
 								</button>
 							) : null}
 						</div>

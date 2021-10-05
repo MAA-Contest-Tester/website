@@ -1,13 +1,13 @@
 import {
 	collection,
 	doc,
-	setDoc,
 	getFirestore,
 	query,
 	where,
 	getDocs,
 	deleteDoc,
 	addDoc,
+	updateDoc,
 } from '@firebase/firestore';
 import { AnswerState } from './questions';
 
@@ -64,9 +64,7 @@ export async function addExam(
 		});
 	} else {
 		// overwrite existing one.
-		await setDoc(doc(examsRef, response), {
-			email: email,
-			exam: exam,
+		await updateDoc(doc(examsRef, response), {
 			answer: answer,
 			correct: correct,
 			score: score,
