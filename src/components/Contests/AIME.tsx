@@ -30,8 +30,8 @@ export default class AIME extends Contest {
 						? this.state.answer[number]
 						: ''
 				}
-				onChange={(e) => {
-					this.setState({
+				onChange={async (e) => {
+					await this.setState({
 						answer: this.state.answer.map((el: string, index: number) => {
 							if (index === number) {
 								if (e.target.value === '') {
@@ -51,6 +51,7 @@ export default class AIME extends Contest {
 						),
 						saved: false,
 					});
+					this.saveAnswers();
 				}}
 				className={
 					'w-20 text-xl rounded-full text-white m-1 p-3 bg-gradient-to-r from-blue-400 to-blue-600 focus:outline-none focus:ring'

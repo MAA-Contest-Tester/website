@@ -35,8 +35,8 @@ export default class AMC extends Contest {
 								: 'from-blue-400 to-blue-600'
 							: 'from-red-400 to-red-600')
 					}
-					onClick={() => {
-						this.setState({
+					onClick={async () => {
+						await this.setState({
 							answer: this.state.answer.map((el: string, index: number) => {
 								if (index === number) {
 									if (letter === 'Clear') return null;
@@ -54,6 +54,7 @@ export default class AMC extends Contest {
 							),
 							saved: false,
 						});
+						this.saveAnswers();
 					}}
 				>
 					{letter}
