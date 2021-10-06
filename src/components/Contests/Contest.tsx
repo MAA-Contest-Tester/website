@@ -3,7 +3,8 @@ import { urlSeparator } from '../../lib/fetchContests';
 import { defaults, getAnswerStateEl, AnswerState } from '../../lib/questions';
 import { addExam, getResponse, clearResponse } from '../../lib/exam_db';
 import Timer from '../Timer';
-import Loading from '../../images/Loading.svg';
+//import Loading from '../../images/Loading.svg';
+import Loading from '../../images/Logo.png';
 import { getAuth, Auth } from 'firebase/auth';
 import { app } from '../Firebase';
 import { perfectScore } from '../../lib/grade';
@@ -192,16 +193,21 @@ export default abstract class Contest extends Component<ContestProps> {
 			>
 				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
 					{this.name.split(urlSeparator).join(' ')} ({this.score()}){' '}
-					{!this.state.saved ? <span className='text-red-500'>*</span> : null}
+					{!this.state.saved && <span className='text-red-500'>*</span>}
+					{this.state.loading && (
+						<img
+							src={Loading}
+							className='mx-4 w-7 animate-spin inline'
+							alt='loading svg'
+						/>
+					)}
 				</h1>
 				{perfectScore(this.score()) && (
 					<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
 						Perfect Score
 					</h1>
 				)}
-				{this.state.loading && (
-					<img src={Loading} className='m-2 w-48' alt='loading svg' />
-				)}
+
 				{this.state.errors && (
 					<div className='text-red-500 m-2 p-3 text-lg'>
 						Error: {this.state.errors}
@@ -247,7 +253,7 @@ export default abstract class Contest extends Component<ContestProps> {
 					<div className='flex flex-wrap flex-row justify-left'>
 						{this.iterationArray.map((number) => (
 							<div
-								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-96 bg-gray-100 dark:bg-gray-800 flex flex-col md:flex-row'
+								className='shadow-lg hover:shadow-xl m-3 p-2 rounded-lg w-answer bg-gray-100 dark:bg-gray-800 flex flex-col md:flex-row'
 								key={number}
 							>
 								<label className='m-2 text-2xl dark:text-white'>

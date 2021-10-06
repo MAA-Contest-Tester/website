@@ -73,7 +73,7 @@ export default function Navbar() {
 					) : (
 						<div className='flex flex-wrap flex-row justify-between'>
 							<Link to='/'>
-								<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
+								<div className='bg-gradient-to-r from-gray-300 to-gray-500 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
 									<img src={Logo} className='w-7' alt='MAA Tester Logo' />
 								</div>
 							</Link>
