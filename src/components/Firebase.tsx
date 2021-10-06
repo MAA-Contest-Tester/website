@@ -13,7 +13,7 @@ import {
 	signOut,
 } from 'firebase/auth';
 
-import GoogleLogo from '../svg/Google.svg';
+import GoogleLogo from '../images/Google.svg';
 
 // Your web app's Firebase configuration
 const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASECONFIG!);
