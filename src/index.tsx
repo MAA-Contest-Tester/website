@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Navbar from './components/Navbar';
-import Home, { AboutPage } from './components/Home';
+import Dashboard from './components/Dashboard';
+import Home from './components/Information/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Contest from './components/getContest';
 import { Error404 } from './components/Errors';
 import Citation from './components/Citation';
-import Info from './components/Info';
+import Info from './components/Information/Info';
 import Preview from './components/Preview';
 
 function URLContest({ match: { params } }: { match: { params: any } }) {
@@ -21,8 +22,8 @@ function App() {
 				<Navbar />
 				<div className='mx-2 px-5'>
 					<Switch>
-						<Route path='/' exact component={AboutPage} />
-						<Route path='/dashboard' exact component={Home} />
+						<Route path='/' exact component={Home} />
+						<Route path='/dashboard' exact component={Dashboard} />
 						<Route path='/preview' exact component={Preview} />
 						<Route path='/info' exact component={Info} />
 						<Route path='/:contest' component={URLContest} />

@@ -3,7 +3,7 @@ import { urlSeparator } from '../../lib/fetchContests';
 import { defaults, getAnswerStateEl, AnswerState } from '../../lib/questions';
 import { addExam, getResponse, clearResponse } from '../../lib/exam_db';
 import Timer from '../Timer';
-import Loading from '../../svg/Loading.svg';
+import Loading from '../../images/Loading.svg';
 import { getAuth, Auth } from 'firebase/auth';
 import { app } from '../Firebase';
 import { perfectScore } from '../../lib/grade';
@@ -75,7 +75,6 @@ export default abstract class Contest extends Component<ContestProps> {
 			return;
 		}
 		if (!this.preview) {
-			window.addEventListener('beforeunload', this.beforeunload);
 			getResponse(this.state.email!, this.name)
 				.then((res) => {
 					if (res) {
@@ -94,12 +93,6 @@ export default abstract class Contest extends Component<ContestProps> {
 							'An error happened while attempting to fetch from the database.',
 					});
 				});
-		}
-	}
-
-	componentWillUnmount() {
-		if (!this.preview) {
-			window.removeEventListener('beforeunload', this.beforeunload);
 		}
 	}
 
@@ -146,6 +139,13 @@ export default abstract class Contest extends Component<ContestProps> {
 		}
 	};
 
+	static warn(callback: () => any) {
+		return () => {
+			if (window.confirm('You will lose all of your progress. Are you sure?'))
+				callback();
+		};
+	}
+	// clear all of the answer choices
 	clearAnswers = async () => {
 		if (
 			_.isEqual(this.state.answer, this.defaultAnswer) &&
@@ -161,6 +161,7 @@ export default abstract class Contest extends Component<ContestProps> {
 		this.saveAnswers();
 	};
 
+	// clear answer choices + notes + entry from db
 	clearEverything = async () => {
 		try {
 			this.setState({ loading: true });
@@ -178,24 +179,20 @@ export default abstract class Contest extends Component<ContestProps> {
 		}
 	};
 
-	beforeunload = (e: Event) => {
-		if (!this.state.saved) {
-			e.preventDefault();
-		}
-	};
-
 	render() {
 		return (
 			<div
 				className={
 					'm-3 p-1 max-w-7xl' +
 					' ' +
-					(this.preview ? 'border-2 border-black rounded-lg' : null)
+					(this.preview
+						? 'border-2 border-black dark:border-white rounded-lg'
+						: null)
 				}
 			>
 				<h1 className='mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white'>
 					{this.name.split(urlSeparator).join(' ')} ({this.score()}){' '}
-					{!this.state.saved ? '*' : null}
+					{!this.state.saved ? <span className='text-red-500'>*</span> : null}
 				</h1>
 				{perfectScore(this.score()) && (
 					<h1 className='mx-3 md:mx-5 my-2 p-2 rounded-lg flex text-green-500'>
@@ -276,7 +273,11 @@ export default abstract class Contest extends Component<ContestProps> {
 							<button
 								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
-								onClick={this.state.loading ? undefined : this.clearAnswers}
+								onClick={
+									this.state.loading
+										? undefined
+										: Contest.warn(this.clearAnswers)
+								}
 							>
 								Clear Answers
 							</button>
@@ -285,7 +286,9 @@ export default abstract class Contest extends Component<ContestProps> {
 									className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 									// prevent concurrent API calls
 									onClick={
-										this.state.loading ? undefined : this.clearEverything
+										this.state.loading
+											? undefined
+											: Contest.warn(this.clearEverything)
 									}
 								>
 									Clear Answers + Unmark Exam

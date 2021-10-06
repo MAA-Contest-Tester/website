@@ -10,7 +10,7 @@ export function Error404() {
 
 export function Error403() {
 	return (
-		<div className='text-3xl m-2 p-3 dark: text-white'>
+		<div className='text-3xl m-2 p-3 dark:text-white'>
 			403 you must register with an account to access contests.
 		</div>
 	);

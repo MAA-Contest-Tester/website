@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { getExamsSolved } from '../lib/user_db';
 import { perfectScore, correctAnswers, getNetScore } from '../lib/grade';
 import StatusBar from './StatusBar';
+import { auth } from './Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Error403 } from './Errors';
 
 enum ContestMenuType {
 	AMC8,
@@ -39,7 +42,7 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 	);
 }
 
-export default function ContestMenu(props: { email: string }) {
+export default function Dashboard() {
 	// preserve selection
 	const bounds = (x: number) => 0 <= x && x < 4;
 	const [contestType, setContestType] = useState(
@@ -49,6 +52,7 @@ export default function ContestMenu(props: { email: string }) {
 			: ContestMenuType.AMC8
 	);
 
+	const [user] = useAuthState(auth);
 	// take from localstorage cache
 	const [solved, setSolved] = useState(
 		new Set<string>(
@@ -68,7 +72,8 @@ export default function ContestMenu(props: { email: string }) {
 	);
 
 	useEffect(() => {
-		getExamsSolved(props.email)
+		if (!user) return;
+		getExamsSolved(user.email!)
 			.then((result) => {
 				const s: Set<string> = new Set();
 				const p: Set<string> = new Set();
@@ -104,48 +109,52 @@ export default function ContestMenu(props: { email: string }) {
 				);
 			})
 			.catch((e) => console.log('error', e));
-	}, [props.email]);
+	}, [user]);
 
-	return (
-		<div className='m-2 p-3'>
-			<h1 className='mx-0 my-2 font-bold dark:text-white'> Dashboard </h1>
-			<StatusBar solved={problemsSolved} score={netScore} />
-			<div className='flex flex-row flex-wrap py-2 justify-center sm:justify-start'>
-				{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
-					<button
-						className={
-							'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
-							' ' +
-							(index === contestType
-								? 'bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1'
-								: 'bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg')
-						}
-						key={'MenuBar' + index}
-						onClick={(e) => {
-							setContestType(index);
-							localStorage.setItem('maatester_selected', index.toString());
-						}}
-					>
-						{val}
-					</button>
+	return user ? (
+		<>
+			<div className='m-2 p-3'>
+				<h1 className='mx-0 my-2 font-bold dark:text-white'> Dashboard </h1>
+				<StatusBar solved={problemsSolved} score={netScore} />
+				<div className='flex flex-row flex-wrap py-2 justify-center sm:justify-start'>
+					{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
+						<button
+							className={
+								'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
+								' ' +
+								(index === contestType
+									? 'bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1'
+									: 'bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg')
+							}
+							key={'MenuBar' + index}
+							onClick={(e) => {
+								setContestType(index);
+								localStorage.setItem('maatester_selected', index.toString());
+							}}
+						>
+							{val}
+						</button>
+					))}
+				</div>
+				{results.get(contestType)!.map((y: ContestYear) => (
+					<>
+						<h2 className='text-2xl m-2 font-semibold dark:text-white'>
+							{y.year}
+						</h2>
+						<div className='flex flex-row flex-wrap justify-center sm:justify-start'>
+							{y.contests.map((s) => (
+								<MenuItem
+									name={s}
+									done={solved.has(s)}
+									perfect={perfect.has(s)}
+								/>
+							))}
+						</div>
+					</>
 				))}
 			</div>
-			{results.get(contestType)!.map((y: ContestYear) => (
-				<>
-					<h2 className='text-2xl m-2 font-semibold dark:text-white'>
-						{y.year}
-					</h2>
-					<div className='flex flex-row flex-wrap justify-center sm:justify-start'>
-						{y.contests.map((s) => (
-							<MenuItem
-								name={s}
-								done={solved.has(s)}
-								perfect={perfect.has(s)}
-							/>
-						))}
-					</div>
-				</>
-			))}
-		</div>
+		</>
+	) : (
+		<Error403 />
 	);
 }

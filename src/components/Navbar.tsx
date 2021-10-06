@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { auth, LogIn, LogOut } from './Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-import Home from '../svg/Home.svg';
-import Remove from '../svg/Remove.svg';
-import Plus from '../svg/Plus.svg';
-import Info from '../svg/Info.svg';
-import Logo from '../svg/Logo.svg';
+import Home from '../images/Home.svg';
+import Remove from '../images/Remove.svg';
+import Plus from '../images/Plus.svg';
+import Info from '../images/Info.svg';
+import Logo from '../images/Logo.png';
 
 export default function Navbar() {
 	const [user] = useAuthState(auth);
@@ -53,8 +53,8 @@ export default function Navbar() {
 
 							<div className='flex flex-wrap flex-row justify-between'>
 								<Link to='/'>
-									<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-3 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
-										<img src={Logo} className='w-9' alt='MAA Tester Logo' />
+									<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
+										<img src={Logo} className='w-7' alt='MAA Tester Logo' />
 									</div>
 								</Link>
 								<Link to='/dashboard'>
@@ -73,8 +73,8 @@ export default function Navbar() {
 					) : (
 						<div className='flex flex-wrap flex-row justify-between'>
 							<Link to='/'>
-								<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-3 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
-									<img src={Logo} className='w-9' alt='MAA Tester Logo' />
+								<div className='bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold'>
+									<img src={Logo} className='w-7' alt='MAA Tester Logo' />
 								</div>
 							</Link>
 							<Link to='/info'>
