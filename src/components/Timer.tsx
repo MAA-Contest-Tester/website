@@ -90,14 +90,14 @@ export default class Timer extends Component<TimerProps, TimerState> {
 				</div>
 				<div className='flex'>
 					<button
-						className='flex-auto font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
+						className='transition duration-100 flex-auto font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
 						onClick={this.state.running ? this.stop : this.start}
 					>
 						{this.state.running ? 'Stop' : 'Start'}
 					</button>
 					{!this.state.running && (
 						<button
-							className='flex-auto font-semibold bg-gradient-to-r from-blue-500 to-blue-600 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
+							className='transition duration-100 flex-auto font-semibold bg-gradient-to-r from-blue-500 to-blue-600 p-3 m-1 rounded-lg text-white text-center transform hover:-translate-y-1'
 							onClick={this.reset}
 						>
 							Reset

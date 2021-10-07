@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.auth {
-	@apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold;
-}
-
 h1 {
-	@apply md:text-4xl text-2xl text-black m-3 p-2;
+	@apply md:text-4xl text-3xl text-black m-3 p-2;
 }

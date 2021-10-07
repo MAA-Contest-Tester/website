@@ -12,6 +12,7 @@ import {
 	signInWithRedirect,
 	signOut,
 } from 'firebase/auth';
+import { AuthButton } from './Navbar';
 
 import GoogleLogo from '../images/Google.svg';
 
@@ -31,19 +32,18 @@ export function LogIn() {
 		} catch (e) {}
 	};
 	return (
-		<>
-			<button
-				className='auth'
-				onClick={() => {
-					login(googleprovider);
-				}}
-			>
+		<button
+			onClick={() => {
+				login(googleprovider);
+			}}
+		>
+			<AuthButton>
 				<div className='flex flex-row gap-1'>
 					<span> Log in with </span>
 					<img src={GoogleLogo} className='w-5' alt='google logo' />
 				</div>
-			</button>
-		</>
+			</AuthButton>
+		</button>
 	);
 }
 
@@ -51,8 +51,8 @@ export function LogOut() {
 	return (
 		auth.currentUser && (
 			<NavLink to='/'>
-				<button className='auth' onClick={() => signOut(auth)}>
-					Log Out
+				<button onClick={() => signOut(auth)}>
+					<AuthButton>Log Out</AuthButton>
 				</button>
 			</NavLink>
 		)
