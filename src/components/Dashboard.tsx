@@ -27,7 +27,7 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 		<Link to={`/${props.name}`}>
 			<div
 				className={
-					'w-56 mx-1 my-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 rounded-xl p-3 text-center dark:text-white' +
+					'transition duration-100 w-56 mx-1 my-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 rounded-xl p-3 text-center dark:text-white' +
 					' ' +
 					(props.perfect
 						? 'bg-green-100 dark:bg-green-600'
@@ -120,7 +120,7 @@ export default function Dashboard() {
 					{['AMC 8', 'AMC 10', 'AMC 12', 'AIME'].map((val, index) => (
 						<button
 							className={
-								'w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
+								'transition duration-100 w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold' +
 								' ' +
 								(index === contestType
 									? 'bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1'

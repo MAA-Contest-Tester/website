@@ -222,13 +222,13 @@ export default abstract class Contest extends Component<ContestProps> {
 						className='m-3'
 						// prevent concurrent API calls
 					>
-						<button className='bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
+						<button className='transition duration-100 bg-gradient-to-r from-blue-500 to-blue-600 font-semibold text-white text-xl p-3 rounded-xl text-center w-full h-full transform hover:-translate-y-1'>
 							Problems
 						</button>
 					</a>
 
 					<button
-						className='bg-gradient-to-r from-gray-700 to-black dark:from-gray-100 dark:to-gray-300 font-semibold text-white dark:text-black text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
+						className='transition duration-100 bg-gradient-to-r from-gray-700 to-black dark:from-gray-100 dark:to-gray-300 font-semibold text-white dark:text-black text-xl p-3 m-3 rounded-xl transform hover:-translate-y-1'
 						// prevent concurrent API calls
 						onClick={this.state.loading ? () => 0 : this.updateAnswers}
 					>
@@ -277,7 +277,7 @@ export default abstract class Contest extends Component<ContestProps> {
 						</h1>
 						<div className='flex flex-row flex-wrap'>
 							<button
-								className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
+								className='transition duration-100 bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 								// prevent concurrent API calls
 								onClick={
 									this.state.loading
@@ -289,7 +289,7 @@ export default abstract class Contest extends Component<ContestProps> {
 							</button>
 							{!this.preview ? (
 								<button
-									className='bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
+									className='transition duration-100 bg-gradient-to-r from-red-500 to-red-600 font-semibold text-white text-xl p-3 m-3 rounded-xl w-48 transform hover:-translate-y-1'
 									// prevent concurrent API calls
 									onClick={
 										this.state.loading

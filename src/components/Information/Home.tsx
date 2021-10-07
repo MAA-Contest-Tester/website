@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/Logo.png';
 import Github from '../../images/Github.png';
+import Email from '../../images/Email.png';
 import Block, { Blue } from './Block';
 
 export default function Home() {
@@ -27,19 +28,10 @@ export default function Home() {
 				</div>
 				<div className='m-2 p-3 flex flex-row flex-wrap justify-center'>
 					<Link to='/preview'>
-						<button className='bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
+						<button className='transition duration-100 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
 							Preview
 						</button>
 					</Link>
-					<a
-						href='https://github.com/junikimm717/MAA_Tester'
-						target='_blank'
-						rel='noreferrer'
-					>
-						<button className='bg-gradient-to-r from-gray-600 to-black text-white rounded-xl p-4 m-2 transform hover:-translate-y-1 shadow-lg'>
-							<img src={Github} alt='Github Logo' className='w-8' />
-						</button>
-					</a>
 				</div>
 				<Block
 					name={
@@ -81,6 +73,31 @@ export default function Home() {
 						</ul>
 					</span>
 				</Block>
+				<div className='flex justify-center'>
+					<div className='bg-gray-100 dark:bg-gray-800 m-2 p-3 rounded-xl flex-1 max-w-2xl text-center'>
+						<h1 className='dark:text-white font-bold'> Contact </h1>
+						<div className='flex flex-row flex-wrap justify-evenly'>
+							<a
+								href='https://github.com/junikimm717/MAA_Tester'
+								target='_blank'
+								rel='noreferrer'
+							>
+								<button className='transition duration-100 bg-gradient-to-r from-gray-600 to-black text-white rounded-xl p-4 m-2 transform hover:-translate-y-1 shadow-lg'>
+									<img src={Github} alt='Github Logo' className='w-9 h-9' />
+								</button>
+							</a>
+							<a
+								href='mailto:maatesterapp703.gmail.com'
+								target='_blank'
+								rel='noreferrer'
+							>
+								<button className='transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 transform hover:-translate-y-1 shadow-lg'>
+									<img src={Email} alt='Email Logo' className='w-9 h-9' />
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</>
 	);
