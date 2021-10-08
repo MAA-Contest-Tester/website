@@ -13,14 +13,17 @@ import { AnswerState } from './questions';
 
 const db = getFirestore();
 
-const examsRef = collection(db, 'Exams');
+export const examsRef = collection(db, 'Exams');
 
-async function getSnapshotEmailExam(email: string, exam: string) {
-	const q = query(
+export function getQueryEmailExam(email: string, exam: string) {
+	return query(
 		examsRef,
 		where('email', '==', email),
 		where('exam', '==', exam)
 	);
+}
+async function getSnapshotEmailExam(email: string, exam: string) {
+	const q = getQueryEmailExam(email, exam);
 	return await getDocs(q);
 }
 
@@ -30,7 +33,7 @@ export async function getResponse(email: string, exam: string) {
 	else return snapshot.docs.shift()?.data();
 }
 
-async function getID(email: string, exam: string) {
+export async function getID(email: string, exam: string) {
 	const snapshot = await getSnapshotEmailExam(email, exam);
 	if (snapshot.empty) return null;
 	else return snapshot.docs.shift()?.id;
