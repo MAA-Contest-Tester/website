@@ -93,7 +93,9 @@ export default abstract class Contest extends Component<ContestProps> {
 	}
 
 	componentWillUnmount() {
-		this.subscribe!();
+		if (this.subscribe) {
+			this.subscribe!();
+		}
 	}
 
 	// callback for updating answers.
