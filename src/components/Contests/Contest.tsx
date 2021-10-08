@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { urlSeparator } from '../../lib/fetchContests';
 import { defaults, getAnswerStateEl, AnswerState } from '../../lib/questions';
-import { addExam, getResponse, clearResponse } from '../../lib/exam_db';
+import { addExam, clearResponse, getQueryEmailExam } from '../../lib/exam_db';
 import Timer from '../Timer';
 //import Loading from '../../images/Loading.svg';
 import Loading from '../../images/Logo.png';
@@ -9,6 +9,7 @@ import { getAuth, Auth } from 'firebase/auth';
 import { app } from '../Firebase';
 import { perfectScore } from '../../lib/grade';
 import _ from 'lodash';
+import { onSnapshot, Unsubscribe } from '@firebase/firestore';
 
 type ContestStateType = {
 	answer: any[];
@@ -34,6 +35,8 @@ export default abstract class Contest extends Component<ContestProps> {
 	protected url: string;
 	public state: ContestStateType;
 	public preview: boolean;
+
+	public subscribe?: Unsubscribe;
 
 	protected iterationArray: number[];
 	protected defaultAnswer: string[];
@@ -76,25 +79,21 @@ export default abstract class Contest extends Component<ContestProps> {
 			return;
 		}
 		if (!this.preview) {
-			getResponse(this.state.email!, this.name)
-				.then((res) => {
-					if (res) {
-						this.setState({
-							answer: res.answer || this.defaultAnswer,
-							correct: res.correct || this.defaultCorrect,
-							notes: res.notes || null,
-							errors: null,
-						});
-					}
-				})
-				.catch((e) => {
-					console.error(e);
-					this.setState({
-						errors:
-							'An error happened while attempting to fetch from the database.',
-					});
+			const q = getQueryEmailExam(this.state.email!, this.name);
+			this.subscribe = onSnapshot(q, (snapshot) => {
+				const res = snapshot.docs.shift()?.data();
+				this.setState({
+					answer: res?.answer || this.defaultAnswer,
+					correct: res?.correct || this.defaultCorrect,
+					notes: res?.notes || null,
+					errors: null,
 				});
+			});
 		}
+	}
+
+	componentWillUnmount() {
+		this.subscribe!();
 	}
 
 	// callback for updating answers.
@@ -154,11 +153,11 @@ export default abstract class Contest extends Component<ContestProps> {
 		) {
 			return;
 		}
-		this.setState({
+		await this.setState({
 			answer: this.defaultAnswer,
 			correct: this.defaultCorrect,
+			saved: false,
 		});
-		this.setState({ saved: false });
 		this.saveAnswers();
 	};
 
