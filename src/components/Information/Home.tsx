@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../images/Logo.png';
 import Github from '../../images/Github.png';
 import Email from '../../images/Email.png';
+import Wordpress from '../../images/Wordpress.png';
 import Block, { Blue } from './Block';
 
 export default function Home() {
@@ -77,6 +78,19 @@ export default function Home() {
 					<div className='bg-gray-100 dark:bg-gray-800 m-2 p-3 rounded-xl flex-1 max-w-2xl text-center'>
 						<h1 className='dark:text-white font-bold'> Contact </h1>
 						<div className='flex flex-row flex-wrap justify-evenly'>
+							<a
+								href='https://blog.maatester.com'
+								target='_blank'
+								rel='noreferrer'
+							>
+								<button className='transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 transform hover:-translate-y-1 shadow-lg'>
+									<img
+										src={Wordpress}
+										alt='Wordpress Logo'
+										className='w-9 h-9'
+									/>
+								</button>
+							</a>
 							<a
 								href='https://github.com/junikimm717/MAA_Tester'
 								target='_blank'
