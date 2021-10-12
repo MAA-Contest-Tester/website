@@ -48,6 +48,11 @@ export default function Home() {
 								Windows
 							</button>
 						</a>
+						<a href='https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.AppImage'>
+							<button className='transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
+								Linux (AppImage)
+							</button>
+						</a>
 					</div>
 				</div>
 				<Block
