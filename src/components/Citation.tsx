@@ -24,7 +24,7 @@ export default function Citation() {
 						</button>
 					</a>
 					<a
-						href='https://github.com/junikimm717/MAA_Tester'
+						href='https://github.com/MAA-Contest-Tester'
 						target='_blank'
 						rel='noreferrer'
 					>

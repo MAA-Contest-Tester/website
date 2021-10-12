@@ -32,6 +32,24 @@ export default function Home() {
 						</button>
 					</Link>
 				</div>
+				<div className='m-2 p-3'>
+					<h1 className='text-center dark:text-white font-bold'>
+						{' '}
+						Download the Desktop Client{' '}
+					</h1>
+					<div className='m-2 p-1 flex flex-row flex-wrap justify-center'>
+						<a href='https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.dmg'>
+							<button className='transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
+								MacOS
+							</button>
+						</a>
+						<a href='https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester.Setup.1.0.0.exe'>
+							<button className='transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold'>
+								Windows
+							</button>
+						</a>
+					</div>
+				</div>
 				<Block
 					name={
 						<div>
