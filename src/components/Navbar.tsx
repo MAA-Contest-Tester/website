@@ -32,23 +32,23 @@ export default function Navbar() {
 				leave='transform duration-200 transition ease-linear'
 				leaveFrom='opacity-100 rotate-0 scale-100'
 				leaveTo='opacity-0 scale-x-95'
+				className='sticky left-0 top-0 z-50'
 			>
-				<div className='sticky left-0 top-0 z-50'>
-					<div className='relative'>
-						<div className='absolute left-0'>
-							<button
-								className='text-white bg-yellow-400 dark:bg-yellow-600 shadow-lg mx-3 my-3 px-2 py-5 rounded-lg text-2xl font-bold text-center'
-								onClick={() => {
-									setHidden(false);
-									localStorage.setItem('maatester_navbarmode', 'false');
-								}}
-							>
-								<img src={Plus} className='w-5' alt='expand navbar' />
-							</button>
-						</div>
+				<div className='relative'>
+					<div className='absolute left-0'>
+						<button
+							className='text-white bg-yellow-400 dark:bg-yellow-600 shadow-lg mx-3 my-3 px-2 py-5 rounded-lg text-2xl font-bold text-center'
+							onClick={() => {
+								setHidden(false);
+								localStorage.setItem('maatester_navbarmode', 'false');
+							}}
+						>
+							<img src={Plus} className='w-5' alt='expand navbar' />
+						</button>
 					</div>
 				</div>
 			</Transition>
+
 			<Transition
 				show={!hidden}
 				enter='transform transition duration-200'
@@ -57,8 +57,9 @@ export default function Navbar() {
 				leave='transform duration-200 transition ease-linear'
 				leaveFrom='opacity-100 rotate-0 scale-100'
 				leaveTo='opacity-0 scale-x-50'
+				className='sticky left-3 top-3'
 			>
-				<div className='sticky left-3 top-3 bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
+				<div className='bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
 					<div className='flex flex-row'>
 						<button
 							className='text-white mx-1 my-2 px-2 py-4 text-2xl rounded-lg font-bold text-center'
