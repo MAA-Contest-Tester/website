@@ -8,6 +8,7 @@ import Remove from '../images/Remove.svg';
 import Plus from '../images/Plus.svg';
 import Info from '../images/Info.svg';
 import Logo from '../images/Logo.png';
+import SettingImage from '../images/Settings.png';
 import { Transition } from '@headlessui/react';
 
 export function AuthButton(props: { children: React.ReactNode }) {
@@ -94,6 +95,11 @@ export default function Navbar() {
 										<img src={Info} className='w-7' alt='Home Logo' />
 									</AuthButton>
 								</Link>
+								<Link to='/settings'>
+									<AuthButton>
+										<img src={SettingImage} className='w-7' alt='Home Logo' />
+									</AuthButton>
+								</Link>
 								<LogOut />
 							</div>
 						</>
@@ -107,6 +113,11 @@ export default function Navbar() {
 							<Link to='/info'>
 								<AuthButton>
 									<img src={Info} className='w-7' alt='Home Logo' />
+								</AuthButton>
+							</Link>
+							<Link to='/settings'>
+								<AuthButton>
+									<img src={SettingImage} className='w-7' alt='Home Logo' />
 								</AuthButton>
 							</Link>
 							<LogIn />
