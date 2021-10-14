@@ -18,24 +18,26 @@ export default function Settings() {
 		}
 	}, [darkmode]);
 	return (
-		<>
-			<h1 className='font-bold dark:text-white'> Settings </h1>
-			<div className='m-2 p-3 dark:text-white text-xl rounded-lg shadow-lg bg-gray-200 dark:bg-gray-700 font-bold'>
-				<span className='mx-5'>Dark Mode</span>
-				<Switch
-					checked={darkmode}
-					onChange={setDarkMode}
-					className={`${
-						darkmode ? 'bg-blue-600' : 'bg-gray-300'
-					} relative inline-flex items-center h-6 rounded-full w-11`}
-				>
-					<span
+		<div className='m-2 p-3'>
+			<h1 className='font-bold dark:text-white my-5'> Settings </h1>
+			<div>
+				<span className='m-2 p-3 dark:text-white text-xl rounded-lg shadow-lg bg-gray-200 dark:bg-gray-700 font-bold'>
+					<span className='mx-5'>Dark Mode</span>
+					<Switch
+						checked={darkmode}
+						onChange={setDarkMode}
 						className={`${
-							darkmode ? 'translate-x-6' : 'translate-x-1'
-						} inline-block w-4 h-4 transform duration-100 bg-white rounded-full`}
-					/>
-				</Switch>
+							darkmode ? 'bg-blue-600' : 'bg-gray-300'
+						} relative inline-flex items-center h-6 rounded-full w-11`}
+					>
+						<span
+							className={`${
+								darkmode ? 'translate-x-6' : 'translate-x-1'
+							} inline-block w-4 h-4 transform duration-100 bg-white rounded-full`}
+						/>
+					</Switch>
+				</span>
 			</div>
-		</>
+		</div>
 	);
 }
