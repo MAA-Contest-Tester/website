@@ -58,7 +58,7 @@ export default function Navbar() {
 				leave='transform duration-200 transition ease-linear'
 				leaveFrom='opacity-100 rotate-0 scale-100'
 				leaveTo='opacity-0 scale-x-50'
-				className='sticky left-3 top-3'
+				className='sticky left-3 top-3 z-50'
 			>
 				<div className='bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
 					<div className='flex flex-row'>
