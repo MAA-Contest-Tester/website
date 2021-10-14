@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Transition } from '@headlessui/react';
 import { numberOfProblems } from '../lib/fetchContests';
 import { Multipliers, Multiplier } from '../lib/grade';
 
@@ -57,7 +58,15 @@ export default function StatusBar(props: { solved: number; score: number }) {
 					<div className='bg-green-300 h-5 rounded-xl' />
 				</div>
 			</div>
-			{verbose ? (
+			<Transition
+				show={verbose}
+				enter='transform transition duration-200 ease-linear'
+				enterFrom='opacity-0 scale-80'
+				enterTo='opacity-100 rotate-0 scale-100'
+				leave='transform duration-200 transition ease-linear'
+				leaveFrom='opacity-100 rotate-0 scale-100'
+				leaveTo='opacity-0 scale-80'
+			>
 				<div className='m-2 flex flex-row flex-wrap justify-between gap-4'>
 					<div>
 						Minimum Score Per Level
@@ -92,7 +101,7 @@ export default function StatusBar(props: { solved: number; score: number }) {
 						</button>
 					</div>
 				</div>
-			) : null}
+			</Transition>
 		</div>
 	);
 }

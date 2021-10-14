@@ -136,22 +136,24 @@ export default function Dashboard() {
 						</button>
 					))}
 				</div>
-				{results.get(contestType)!.map((y: ContestYear) => (
-					<>
-						<h2 className='text-2xl m-2 font-semibold dark:text-white'>
-							{y.year}
-						</h2>
-						<div className='flex flex-row flex-wrap justify-center sm:justify-start'>
-							{y.contests.map((s) => (
-								<MenuItem
-									name={s}
-									done={solved.has(s)}
-									perfect={perfect.has(s)}
-								/>
-							))}
-						</div>
-					</>
-				))}
+				<div className='transition ease-linear duration-400'>
+					{results.get(contestType)!.map((y: ContestYear) => (
+						<>
+							<h2 className='text-2xl m-2 font-semibold dark:text-white'>
+								{y.year}
+							</h2>
+							<div className='flex flex-row flex-wrap justify-center sm:justify-start'>
+								{y.contests.map((s) => (
+									<MenuItem
+										name={s}
+										done={solved.has(s)}
+										perfect={perfect.has(s)}
+									/>
+								))}
+							</div>
+						</>
+					))}
+				</div>
 			</div>
 		</>
 	) : (

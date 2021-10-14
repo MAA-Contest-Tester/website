@@ -8,6 +8,7 @@ import Remove from '../images/Remove.svg';
 import Plus from '../images/Plus.svg';
 import Info from '../images/Info.svg';
 import Logo from '../images/Logo.png';
+import { Transition } from '@headlessui/react';
 
 export function AuthButton(props: { children: React.ReactNode }) {
 	return (
@@ -23,7 +24,15 @@ export default function Navbar() {
 	const [hidden, setHidden] = useState(hiddenState);
 	return (
 		<>
-			{hidden ? (
+			<Transition
+				show={hidden}
+				enter='transform transition duration-200'
+				enterFrom='opacity-0 scale-x-95'
+				enterTo='opacity-100 rotate-0 scale-100'
+				leave='transform duration-200 transition ease-linear'
+				leaveFrom='opacity-100 rotate-0 scale-100'
+				leaveTo='opacity-0 scale-x-95'
+			>
 				<div className='sticky left-0 top-0 z-50'>
 					<div className='relative'>
 						<div className='absolute left-0'>
@@ -39,7 +48,16 @@ export default function Navbar() {
 						</div>
 					</div>
 				</div>
-			) : (
+			</Transition>
+			<Transition
+				show={!hidden}
+				enter='transform transition duration-200'
+				enterFrom='opacity-0 scale-x-50'
+				enterTo='opacity-100 rotate-0 scale-100'
+				leave='transform duration-200 transition ease-linear'
+				leaveFrom='opacity-100 rotate-0 scale-100'
+				leaveTo='opacity-0 scale-x-50'
+			>
 				<div className='sticky left-3 top-3 bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50'>
 					<div className='flex flex-row'>
 						<button
@@ -94,7 +112,7 @@ export default function Navbar() {
 						</div>
 					)}
 				</div>
-			)}
+			</Transition>
 		</>
 	);
 }
