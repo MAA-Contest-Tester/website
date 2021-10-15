@@ -38,6 +38,17 @@ function App() {
 	);
 }
 
+// dark mode must be set before loading.
+if (localStorage.getItem('darkmode') === 'true') {
+	document.body.classList.add('dark');
+	document.body.classList.add('bg-gray-900');
+	document.body.classList.add('text-white');
+} else {
+	document.body.classList.remove('dark');
+	document.body.classList.remove('bg-gray-900');
+	document.body.classList.remove('text-white');
+}
+
 if (process.env.NODE_ENV === 'development') {
 	ReactDOM.render(
 		<React.StrictMode>
