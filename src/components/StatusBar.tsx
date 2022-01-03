@@ -33,7 +33,9 @@ export default function StatusBar(props: { solved: number; score: number }) {
 	const percentage = `${((props.solved / problems) * 100).toPrecision(3)}%`;
 	let message = null;
 	levels.forEach((x: Level) => {
-		if (x.min <= props.solved) message = x.message;
+		if (x.min <= props.score) {
+			message = x.message;
+		}
 	});
 
 	const [verbose, setVerbose] = useState(false);
