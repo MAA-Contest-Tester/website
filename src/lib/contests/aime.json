@@ -1,258 +1,162 @@
 [
-	{
-		"year": "2021",
-		"contests": [
-			"2021_AIME_I",
-			"2021_AIME_II"
-		]
-	},
-	{
-		"year": "2020",
-		"contests": [
-			"2020_AIME_I",
-			"2020_AIME_II"
-		]
-	},
-	{
-		"year": "2019",
-		"contests": [
-			"2019_AIME_I",
-			"2019_AIME_II"
-		]
-	},
-	{
-		"year": "2018",
-		"contests": [
-			"2018_AIME_I",
-			"2018_AIME_II"
-		]
-	},
-	{
-		"year": "2017",
-		"contests": [
-			"2017_AIME_I",
-			"2017_AIME_II"
-		]
-	},
-	{
-		"year": "2016",
-		"contests": [
-			"2016_AIME_I",
-			"2016_AIME_II"
-		]
-	},
-	{
-		"year": "2015",
-		"contests": [
-			"2015_AIME_I",
-			"2015_AIME_II"
-		]
-	},
-	{
-		"year": "2014",
-		"contests": [
-			"2014_AIME_I",
-			"2014_AIME_II"
-		]
-	},
-	{
-		"year": "2013",
-		"contests": [
-			"2013_AIME_I",
-			"2013_AIME_II"
-		]
-	},
-	{
-		"year": "2012",
-		"contests": [
-			"2012_AIME_I",
-			"2012_AIME_II"
-		]
-	},
-	{
-		"year": "2011",
-		"contests": [
-			"2011_AIME_I",
-			"2011_AIME_II"
-		]
-	},
-	{
-		"year": "2010",
-		"contests": [
-			"2010_AIME_I",
-			"2010_AIME_II"
-		]
-	},
-	{
-		"year": "2009",
-		"contests": [
-			"2009_AIME_I",
-			"2009_AIME_II"
-		]
-	},
-	{
-		"year": "2008",
-		"contests": [
-			"2008_AIME_I",
-			"2008_AIME_II"
-		]
-	},
-	{
-		"year": "2007",
-		"contests": [
-			"2007_AIME_I",
-			"2007_AIME_II"
-		]
-	},
-	{
-		"year": "2006",
-		"contests": [
-			"2006_AIME_I",
-			"2006_AIME_II"
-		]
-	},
-	{
-		"year": "2005",
-		"contests": [
-			"2005_AIME_I",
-			"2005_AIME_II"
-		]
-	},
-	{
-		"year": "2004",
-		"contests": [
-			"2004_AIME_I",
-			"2004_AIME_II"
-		]
-	},
-	{
-		"year": "2003",
-		"contests": [
-			"2003_AIME_I",
-			"2003_AIME_II"
-		]
-	},
-	{
-		"year": "2002",
-		"contests": [
-			"2002_AIME_I",
-			"2002_AIME_II"
-		]
-	},
-	{
-		"year": "2001",
-		"contests": [
-			"2001_AIME_I",
-			"2001_AIME_II"
-		]
-	},
-	{
-		"year": "2000",
-		"contests": [
-			"2000_AIME_I",
-			"2000_AIME_II"
-		]
-	},
-	{
-		"year": "1999",
-		"contests": [
-			"1999_AIME"
-		]
-	},
-	{
-		"year": "1998",
-		"contests": [
-			"1998_AIME"
-		]
-	},
-	{
-		"year": "1997",
-		"contests": [
-			"1997_AIME"
-		]
-	},
-	{
-		"year": "1996",
-		"contests": [
-			"1996_AIME"
-		]
-	},
-	{
-		"year": "1995",
-		"contests": [
-			"1995_AIME"
-		]
-	},
-	{
-		"year": "1994",
-		"contests": [
-			"1994_AIME"
-		]
-	},
-	{
-		"year": "1993",
-		"contests": [
-			"1993_AIME"
-		]
-	},
-	{
-		"year": "1992",
-		"contests": [
-			"1992_AIME"
-		]
-	},
-	{
-		"year": "1991",
-		"contests": [
-			"1991_AIME"
-		]
-	},
-	{
-		"year": "1990",
-		"contests": [
-			"1990_AIME"
-		]
-	},
-	{
-		"year": "1989",
-		"contests": [
-			"1989_AIME"
-		]
-	},
-	{
-		"year": "1988",
-		"contests": [
-			"1988_AIME"
-		]
-	},
-	{
-		"year": "1987",
-		"contests": [
-			"1987_AIME"
-		]
-	},
-	{
-		"year": "1986",
-		"contests": [
-			"1986_AIME"
-		]
-	},
-	{
-		"year": "1985",
-		"contests": [
-			"1985_AIME"
-		]
-	},
-	{
-		"year": "1984",
-		"contests": [
-			"1984_AIME"
-		]
-	},
-	{
-		"year": "1983",
-		"contests": [
-			"1983_AIME"
-		]
-	}
+  {
+    "year": "2022",
+    "contests": ["2022_AIME_I", "2022_AIME_II"]
+  },
+  {
+    "year": "2021",
+    "contests": ["2021_AIME_I", "2021_AIME_II"]
+  },
+  {
+    "year": "2020",
+    "contests": ["2020_AIME_I", "2020_AIME_II"]
+  },
+  {
+    "year": "2019",
+    "contests": ["2019_AIME_I", "2019_AIME_II"]
+  },
+  {
+    "year": "2018",
+    "contests": ["2018_AIME_I", "2018_AIME_II"]
+  },
+  {
+    "year": "2017",
+    "contests": ["2017_AIME_I", "2017_AIME_II"]
+  },
+  {
+    "year": "2016",
+    "contests": ["2016_AIME_I", "2016_AIME_II"]
+  },
+  {
+    "year": "2015",
+    "contests": ["2015_AIME_I", "2015_AIME_II"]
+  },
+  {
+    "year": "2014",
+    "contests": ["2014_AIME_I", "2014_AIME_II"]
+  },
+  {
+    "year": "2013",
+    "contests": ["2013_AIME_I", "2013_AIME_II"]
+  },
+  {
+    "year": "2012",
+    "contests": ["2012_AIME_I", "2012_AIME_II"]
+  },
+  {
+    "year": "2011",
+    "contests": ["2011_AIME_I", "2011_AIME_II"]
+  },
+  {
+    "year": "2010",
+    "contests": ["2010_AIME_I", "2010_AIME_II"]
+  },
+  {
+    "year": "2009",
+    "contests": ["2009_AIME_I", "2009_AIME_II"]
+  },
+  {
+    "year": "2008",
+    "contests": ["2008_AIME_I", "2008_AIME_II"]
+  },
+  {
+    "year": "2007",
+    "contests": ["2007_AIME_I", "2007_AIME_II"]
+  },
+  {
+    "year": "2006",
+    "contests": ["2006_AIME_I", "2006_AIME_II"]
+  },
+  {
+    "year": "2005",
+    "contests": ["2005_AIME_I", "2005_AIME_II"]
+  },
+  {
+    "year": "2004",
+    "contests": ["2004_AIME_I", "2004_AIME_II"]
+  },
+  {
+    "year": "2003",
+    "contests": ["2003_AIME_I", "2003_AIME_II"]
+  },
+  {
+    "year": "2002",
+    "contests": ["2002_AIME_I", "2002_AIME_II"]
+  },
+  {
+    "year": "2001",
+    "contests": ["2001_AIME_I", "2001_AIME_II"]
+  },
+  {
+    "year": "2000",
+    "contests": ["2000_AIME_I", "2000_AIME_II"]
+  },
+  {
+    "year": "1999",
+    "contests": ["1999_AIME"]
+  },
+  {
+    "year": "1998",
+    "contests": ["1998_AIME"]
+  },
+  {
+    "year": "1997",
+    "contests": ["1997_AIME"]
+  },
+  {
+    "year": "1996",
+    "contests": ["1996_AIME"]
+  },
+  {
+    "year": "1995",
+    "contests": ["1995_AIME"]
+  },
+  {
+    "year": "1994",
+    "contests": ["1994_AIME"]
+  },
+  {
+    "year": "1993",
+    "contests": ["1993_AIME"]
+  },
+  {
+    "year": "1992",
+    "contests": ["1992_AIME"]
+  },
+  {
+    "year": "1991",
+    "contests": ["1991_AIME"]
+  },
+  {
+    "year": "1990",
+    "contests": ["1990_AIME"]
+  },
+  {
+    "year": "1989",
+    "contests": ["1989_AIME"]
+  },
+  {
+    "year": "1988",
+    "contests": ["1988_AIME"]
+  },
+  {
+    "year": "1987",
+    "contests": ["1987_AIME"]
+  },
+  {
+    "year": "1986",
+    "contests": ["1986_AIME"]
+  },
+  {
+    "year": "1985",
+    "contests": ["1985_AIME"]
+  },
+  {
+    "year": "1984",
+    "contests": ["1984_AIME"]
+  },
+  {
+    "year": "1983",
+    "contests": ["1983_AIME"]
+  }
 ]
