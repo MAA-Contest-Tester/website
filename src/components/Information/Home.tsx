@@ -5,7 +5,7 @@ import Apple from "../../images/Apple.png";
 import Windows from "../../images/Windows.png";
 import Linux from "../../images/Linux.png";
 
-import Block, { Blue } from "./Block";
+import Block, { Blue, Yellow } from "./Block";
 
 export default function Home() {
   return (
@@ -75,6 +75,20 @@ export default function Home() {
               </li>
               <li>
                 <Blue> All AIME</Blue> Contests (1983 -){" "}
+              </li>
+              <li>
+                <Blue>
+                  {" "}
+                  <Yellow>New!</Yellow> All AJHSME
+                </Blue>{" "}
+                Contests (1985 - 1998){" "}
+              </li>
+              <li>
+                <Blue>
+                  {" "}
+                  <Yellow>New!</Yellow> All AHSME
+                </Blue>{" "}
+                Contests (1973 - 1999){" "}
               </li>
             </ul>
           </span>
