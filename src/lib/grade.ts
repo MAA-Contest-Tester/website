@@ -81,11 +81,11 @@ export class Multiplier {
 }
 export const Multipliers: Multiplier[] = [
   new Multiplier(/AIME/, 3, "AIME"),
-  new Multiplier(/AHSME/, 2, "AMC 8"),
+  new Multiplier(/AHSME/, 2, "AHSME"),
   new Multiplier(/AMC_12/, 2, "AMC 12"),
   new Multiplier(/AMC_10/, 2, "AMC 10"),
   new Multiplier(/AMC_8/, 1, "AMC 8"),
-  new Multiplier(/AJHSME/, 1, "AMC 8"),
+  new Multiplier(/AJHSME/, 1, "AJHSME"),
 ];
 
 export const correctAnswers = (graded: AnswerState[]) =>
