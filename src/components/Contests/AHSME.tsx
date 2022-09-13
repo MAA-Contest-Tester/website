@@ -21,7 +21,7 @@ export default class AHSME extends AMC {
     return this.problemcount;
   }
   timeGiven() {
-    return 40;
+    return 90;
   }
   grade(url: string, updatedAnswer: any[]) {
     return gradeAMC(url, updatedAnswer);
