@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getAllAMC, getAllAIME, ContestYear } from "../lib/fetch_contests";
+import {
+  getAllAMC,
+  getAllAIME,
+  ContestYear,
+  getAllAJHSME,
+  getAllAHSME,
+} from "../lib/fetch_contests";
 import { Link } from "react-router-dom";
 import { getExamsSolved } from "../lib/user_db";
 import { perfectScore, correctAnswers, getNetScore } from "../lib/grade";
@@ -13,6 +19,8 @@ enum ContestMenuType {
   AMC10,
   AMC12,
   AIME,
+  AJHSME,
+  AHSME,
 }
 
 const results = new Map<ContestMenuType, ContestYear[]>();
@@ -20,6 +28,8 @@ results.set(ContestMenuType.AMC8, getAllAMC(8));
 results.set(ContestMenuType.AMC10, getAllAMC(10));
 results.set(ContestMenuType.AMC12, getAllAMC(12));
 results.set(ContestMenuType.AIME, getAllAIME());
+results.set(ContestMenuType.AJHSME, getAllAJHSME());
+results.set(ContestMenuType.AHSME, getAllAHSME());
 
 function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
   const title = props.name.split("_").join(" ");
@@ -117,24 +127,26 @@ export default function Dashboard() {
         <h1 className="mx-0 my-2 font-bold dark:text-white"> Dashboard </h1>
         <StatusBar solved={problemsSolved} score={netScore} />
         <div className="flex flex-row flex-wrap py-2 justify-center sm:justify-start">
-          {["AMC 8", "AMC 10", "AMC 12", "AIME"].map((val, index) => (
-            <button
-              className={
-                "transition duration-100 w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold" +
-                " " +
-                (index === contestType
-                  ? "bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1"
-                  : "bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg")
-              }
-              key={"MenuBar" + index}
-              onClick={(e) => {
-                setContestType(index);
-                localStorage.setItem("maatester_selected", index.toString());
-              }}
-            >
-              {val}
-            </button>
-          ))}
+          {["AMC 8", "AMC 10", "AMC 12", "AIME", "AJHSME", "AHSME"].map(
+            (val, index) => (
+              <button
+                className={
+                  "transition duration-100 w-40 rounded-lg m-2 my-3 p-3 text-lg transform hover:-translate-y-1 text-center text-white font-semibold" +
+                  " " +
+                  (index === contestType
+                    ? "bg-gradient-to-r from-yellow-400 to-yellow-600 -translate-y-1"
+                    : "bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg")
+                }
+                key={"MenuBar" + index}
+                onClick={(e) => {
+                  setContestType(index);
+                  localStorage.setItem("maatester_selected", index.toString());
+                }}
+              >
+                {val}
+              </button>
+            )
+          )}
         </div>
         <div className="transition ease-linear duration-400">
           {results.get(contestType)!.map((y: ContestYear) => (

@@ -19,6 +19,14 @@ export function getAllAIME() {
   return AIMEContests as ContestYear[];
 }
 
+export function getAllAJHSME() {
+  return AJHSMEContests as ContestYear[];
+}
+
+export function getAllAHSME() {
+  return AHSMEContests as ContestYear[];
+}
+
 function existsInCategory(
   name: string,
   obj: { year: string; contests: string[]; length?: number }[]
