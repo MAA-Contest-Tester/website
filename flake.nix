@@ -12,7 +12,7 @@
         pkgs = import nixpkgs { inherit system; };
       in {
 
-        devShell = pkgs.mkShell { buildInputs = with pkgs; [ yarn ]; };
+        devShell = pkgs.mkShell { buildInputs = with pkgs; [ yarn nodePackages.firebase-tools ]; };
 
         formatter = nixpkgs.legacyPackages."${system}".nixfmt;
 

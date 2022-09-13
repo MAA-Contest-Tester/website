@@ -21,9 +21,10 @@ type ContestStateType = {
   saved: boolean;
 };
 
-type ContestProps = {
+export type ContestProps = {
   name: string;
   preview?: boolean;
+  length?: number;
 };
 
 export default abstract class Contest extends Component<ContestProps> {
