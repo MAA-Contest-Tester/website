@@ -4,12 +4,13 @@ import { defaults, getAnswerStateEl, AnswerState } from "../../lib/questions";
 import { addExam, clearResponse, getQueryEmailExam } from "../../lib/exam_db";
 import Timer from "../Timer";
 //import Loading from '../../images/Loading.svg';
-import Loading from "../../images/Logo.png";
 import { getAuth, Auth } from "firebase/auth";
 import { app } from "../Firebase";
 import { perfectScore } from "../../lib/grade";
 import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
+
+const Loading = "/images/Logo.png";
 
 type ContestStateType = {
   answer: any[];

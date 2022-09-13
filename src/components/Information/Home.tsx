@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../images/Logo.png";
-import Apple from "../../images/Apple.png";
-import Windows from "../../images/Windows.png";
-import Linux from "../../images/Linux.png";
 
 import Block, { Blue, Yellow } from "./Block";
 
@@ -12,7 +8,7 @@ export default function Home() {
     <>
       <div className="m-2 p-3 dark:text-white">
         <div className="text-center">
-          <img src={Logo} alt="Logo" className="w-20 mx-5 inline" />
+          <img src="/images/Logo.png" alt="Logo" className="w-20 mx-5 inline" />
         </div>
         <h1 className="font-bold text-center text-5xl dark:text-white">
           The MAA{" "}
@@ -43,17 +39,21 @@ export default function Home() {
           <div className="m-2 p-1 flex flex-row flex-wrap justify-center">
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.dmg">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img src={Apple} className="h-9" alt="Apple Logo" />
+                <img src="/images/Apple.png" className="h-9" alt="Apple Logo" />
               </button>
             </a>
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester.Setup.1.0.0.exe">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img src={Windows} className="h-9" alt="Windows Logo" />
+                <img
+                  src="/images/Windows.png"
+                  className="h-9"
+                  alt="Windows Logo"
+                />
               </button>
             </a>
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.AppImage">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img src={Linux} className="h-9" alt="Linux Logo" />
+                <img src="/images/Linux.png" className="h-9" alt="Linux Logo" />
               </button>
             </a>
           </div>
