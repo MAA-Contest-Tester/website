@@ -54,7 +54,7 @@ function MenuItem(props: { name: string; done?: boolean; perfect?: boolean }) {
 
 export default function Dashboard() {
   // preserve selection
-  const bounds = (x: number) => 0 <= x && x < 4;
+  const bounds = (x: number) => 0 <= x && x < 6;
   const [contestType, setContestType] = useState(
     localStorage.getItem("maatester_selected") &&
       bounds(parseInt(localStorage.getItem("maatester_selected")!))
@@ -141,6 +141,7 @@ export default function Dashboard() {
                 onClick={(e) => {
                   setContestType(index);
                   localStorage.setItem("maatester_selected", index.toString());
+                  console.log(localStorage.getItem("maatester_selected"));
                 }}
               >
                 {val}

@@ -33,6 +33,8 @@ export default class AHSME extends AMC {
         else if (x === 1) return 5;
         else return 0;
       })
-      .reduce((prev: number, val: number) => prev + val, 0)}/150`;
+      .reduce((prev: number, val: number) => prev + val, 0)}/${
+      this.numberOfProblems() * 5
+    }`;
   }
 }
