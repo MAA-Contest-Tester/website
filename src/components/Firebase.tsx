@@ -3,6 +3,7 @@ import "../index.css";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // redirection (from stackoverflow)
 import { NavLink } from "react-router-dom";
 import "firebase/firestore";
@@ -23,6 +24,7 @@ const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASECONFIG!);
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
+const analytics = getAnalytics(app);
 auth.useDeviceLanguage();
 const googleprovider = new GoogleAuthProvider();
 
