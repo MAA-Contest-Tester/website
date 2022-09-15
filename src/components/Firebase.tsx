@@ -10,7 +10,7 @@ import "firebase/firestore";
 import {
   getAuth,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { AuthButton } from "./Navbar";
@@ -30,9 +30,7 @@ const googleprovider = new GoogleAuthProvider();
 
 export function LogIn() {
   const login = async (provider: GoogleAuthProvider) => {
-    try {
-      await signInWithRedirect(auth, provider);
-    } catch (e) {}
+    signInWithPopup(auth, provider);
   };
   return (
     <button
