@@ -24,7 +24,7 @@ const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASECONFIG!);
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
-const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app);
 auth.useDeviceLanguage();
 const googleprovider = new GoogleAuthProvider();
 
