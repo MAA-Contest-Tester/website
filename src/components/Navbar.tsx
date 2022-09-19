@@ -6,12 +6,7 @@ import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Home = "/images/Home.svg";
-const Remove = "/images/Remove.svg";
-const Plus = "/images/Plus.svg";
-const Info = "/images/Info.svg";
 const Logo = "/images/Logo.png";
-const SettingImage = "/images/Settings.png";
 
 export function AuthButton(props: { children: React.ReactNode }) {
   return (

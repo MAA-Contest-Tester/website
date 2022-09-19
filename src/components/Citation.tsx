@@ -1,11 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const Github = "/images/Github.png";
-const Email = "/images/Email.png";
-const Wordpress = "/images/Wordpress.png";
-const Youtube = "/images/Youtube.png";
-
 export default function Citation() {
   return (
     <>

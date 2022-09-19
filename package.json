@@ -53,6 +53,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
   "devDependencies": {
     "@craco/craco": "^6.2.0",
     "@types/lodash": "^4.14.172",
