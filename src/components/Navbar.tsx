@@ -85,35 +85,35 @@ export default function Navbar() {
               </div>
 
               <div className="flex flex-wrap flex-row justify-between">
-                <Link to="/">
-                  <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
+                <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
+                  <Link to="/">
                     <img src={Logo} className="w-7" alt="MAA Tester Logo" />
-                  </div>
-                </Link>
-                <AuthButton>
-                  <Link to="/dashboard">
+                  </Link>
+                </div>
+                <Link to="/dashboard">
+                  <AuthButton>
                     <FontAwesomeIcon
                       icon="dashboard"
                       className="w-7 text-black text-3xl"
                     />
-                  </Link>
-                </AuthButton>
-                <AuthButton>
-                  <Link to="/info">
+                  </AuthButton>
+                </Link>
+                <Link to="/info">
+                  <AuthButton>
                     <FontAwesomeIcon
                       icon="info"
                       className="w-7 text-black text-3xl"
                     />
-                  </Link>
-                </AuthButton>
-                <AuthButton>
-                  <Link to="/settings">
+                  </AuthButton>
+                </Link>
+                <Link to="/settings">
+                  <AuthButton>
                     <FontAwesomeIcon
                       icon="gear"
                       className="w-7 text-black text-3xl"
                     />
-                  </Link>
-                </AuthButton>
+                  </AuthButton>
+                </Link>
                 <LogOut />
               </div>
             </>
@@ -124,22 +124,22 @@ export default function Navbar() {
                   <img src={Logo} className="w-7" alt="MAA Tester Logo" />
                 </div>
               </Link>
-              <AuthButton>
-                <Link to="/info">
+              <Link to="/info">
+                <AuthButton>
                   <FontAwesomeIcon
                     icon="info"
                     className="w-7 text-black text-3xl"
                   />
-                </Link>
-              </AuthButton>
-              <AuthButton>
-                <Link to="/settings">
+                </AuthButton>
+              </Link>
+              <Link to="/settings">
+                <AuthButton>
                   <FontAwesomeIcon
                     icon="gear"
                     className="w-7 text-black text-3xl"
                   />
-                </Link>
-              </AuthButton>
+                </AuthButton>
+              </Link>
               <LogIn />
             </div>
           )}
