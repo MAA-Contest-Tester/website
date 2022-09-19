@@ -141,7 +141,6 @@ export default function Dashboard() {
                 onClick={(e) => {
                   setContestType(index);
                   localStorage.setItem("maatester_selected", index.toString());
-                  console.log(localStorage.getItem("maatester_selected"));
                 }}
               >
                 {val}
@@ -161,6 +160,7 @@ export default function Dashboard() {
                     name={s}
                     done={solved.has(s)}
                     perfect={perfect.has(s)}
+                    key={s}
                   />
                 ))}
               </div>

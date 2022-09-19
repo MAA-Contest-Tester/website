@@ -4,18 +4,16 @@ import { auth, LogIn, LogOut } from "./Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Home = "/images/Home.svg";
-const Remove = "/images/Remove.svg";
-const Plus = "/images/Plus.svg";
-const Info = "/images/Info.svg";
 const Logo = "/images/Logo.png";
-const SettingImage = "/images/Settings.png";
 
 export function AuthButton(props: { children: React.ReactNode }) {
   return (
-    <div className="transition duration-100 ease-out bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold">
-      {props.children}
+    <div className="transition duration-100 ease-out bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold flex justify-items-center align-middle h-16">
+      <div className="flex justify-center justify-items-center h-full">
+        {props.children}
+      </div>
     </div>
   );
 }
@@ -45,7 +43,10 @@ export default function Navbar() {
                 localStorage.setItem("maatester_navbarmode", "false");
               }}
             >
-              <img src={Plus} className="w-5" alt="expand navbar" />
+              <FontAwesomeIcon
+                icon="plus"
+                className="w-4 text-black text-2xl"
+              />
             </button>
           </div>
         </div>
@@ -61,7 +62,7 @@ export default function Navbar() {
         leaveTo="opacity-0 scale-x-50"
         className="sticky left-3 top-3 z-50"
       >
-        <div className="bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center m-3 p-1 z-50">
+        <div className="bg-yellow-400 dark:bg-yellow-600 shadow-lg rounded-lg flex flex-row flex-wrap justify-between items-center align-middle m-3 p-1 z-50">
           <div className="flex flex-row">
             <button
               className="text-white mx-1 my-2 px-2 py-4 text-2xl rounded-lg font-bold text-center"
@@ -70,7 +71,10 @@ export default function Navbar() {
                 localStorage.setItem("maatester_navbarmode", "true");
               }}
             >
-              <img src={Remove} className="w-5" alt="remove navbar" />
+              <FontAwesomeIcon
+                icon="xmark"
+                className="w-4 text-black text-3xl"
+              />
             </button>
           </div>
 
@@ -82,45 +86,60 @@ export default function Navbar() {
 
               <div className="flex flex-wrap flex-row justify-between">
                 <Link to="/">
-                  <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold">
+                  <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
                     <img src={Logo} className="w-7" alt="MAA Tester Logo" />
                   </div>
                 </Link>
-                <Link to="/dashboard">
-                  <AuthButton>
-                    <img src={Home} className="w-7" alt="Home Logo" />
-                  </AuthButton>
-                </Link>
-                <Link to="/info">
-                  <AuthButton>
-                    <img src={Info} className="w-7" alt="Home Logo" />
-                  </AuthButton>
-                </Link>
-                <Link to="/settings">
-                  <AuthButton>
-                    <img src={SettingImage} className="w-7" alt="Home Logo" />
-                  </AuthButton>
-                </Link>
+                <AuthButton>
+                  <Link to="/dashboard">
+                    <FontAwesomeIcon
+                      icon="dashboard"
+                      className="w-7 text-black text-3xl"
+                    />
+                  </Link>
+                </AuthButton>
+                <AuthButton>
+                  <Link to="/info">
+                    <FontAwesomeIcon
+                      icon="info"
+                      className="w-7 text-black text-3xl"
+                    />
+                  </Link>
+                </AuthButton>
+                <AuthButton>
+                  <Link to="/settings">
+                    <FontAwesomeIcon
+                      icon="gear"
+                      className="w-7 text-black text-3xl"
+                    />
+                  </Link>
+                </AuthButton>
                 <LogOut />
               </div>
             </>
           ) : (
             <div className="flex flex-wrap flex-row justify-between">
               <Link to="/">
-                <div className="bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold">
+                <div className="bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
                   <img src={Logo} className="w-7" alt="MAA Tester Logo" />
                 </div>
               </Link>
-              <Link to="/info">
-                <AuthButton>
-                  <img src={Info} className="w-7" alt="Home Logo" />
-                </AuthButton>
-              </Link>
-              <Link to="/settings">
-                <AuthButton>
-                  <img src={SettingImage} className="w-7" alt="Home Logo" />
-                </AuthButton>
-              </Link>
+              <AuthButton>
+                <Link to="/info">
+                  <FontAwesomeIcon
+                    icon="info"
+                    className="w-7 text-black text-3xl"
+                  />
+                </Link>
+              </AuthButton>
+              <AuthButton>
+                <Link to="/settings">
+                  <FontAwesomeIcon
+                    icon="gear"
+                    className="w-7 text-black text-3xl"
+                  />
+                </Link>
+              </AuthButton>
               <LogIn />
             </div>
           )}
