@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -39,21 +40,26 @@ export default function Home() {
           <div className="m-2 p-1 flex flex-row flex-wrap justify-center">
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.dmg">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img src="/images/Apple.png" className="h-9" alt="Apple Logo" />
+                <FontAwesomeIcon
+                  icon={["fab", "apple"]}
+                  className="text-black text-4xl"
+                />
               </button>
             </a>
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester.Setup.1.0.0.exe">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img
-                  src="/images/Windows.png"
-                  className="h-9"
-                  alt="Windows Logo"
+                <FontAwesomeIcon
+                  icon={["fab", "windows"]}
+                  className="text-black text-4xl"
                 />
               </button>
             </a>
             <a href="https://github.com/MAA-Contest-Tester/desktop/releases/download/14d4c44/maa-tester-1.0.0.AppImage">
               <button className="transition duration-100 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-xl p-4 m-2 text-2xl md:text-3xl transform hover:-translate-y-1 shadow-lg font-bold">
-                <img src="/images/Linux.png" className="h-9" alt="Linux Logo" />
+                <FontAwesomeIcon
+                  icon={["fab", "linux"]}
+                  className="text-black text-4xl"
+                />
               </button>
             </a>
           </div>

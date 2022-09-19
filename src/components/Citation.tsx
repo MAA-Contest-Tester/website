@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const Github = "/images/Github.png";
@@ -12,7 +13,10 @@ export default function Citation() {
         <div className="flex flex-row flex-wrap justify-center gap-2">
           <a href="https://blog.maatester.com" target="_blank" rel="noreferrer">
             <button className="transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-full p-3 transform hover:-translate-y-1 shadow-lg">
-              <img src={Wordpress} alt="Wordpress Logo" className="w-9 h-9" />
+              <FontAwesomeIcon
+                icon={["fab", "wordpress"]}
+                className="text-black text-4xl"
+              />
             </button>
           </a>
           <a
@@ -21,7 +25,10 @@ export default function Citation() {
             rel="noreferrer"
           >
             <button className="transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-full p-3 transform hover:-translate-y-1 shadow-lg">
-              <img src={Youtube} alt="Youtube Logo" className="w-9 h-9" />
+              <FontAwesomeIcon
+                icon={["fab", "youtube"]}
+                className="text-black text-4xl"
+              />
             </button>
           </a>
           <a
@@ -30,7 +37,10 @@ export default function Citation() {
             rel="noreferrer"
           >
             <button className="transition duration-100 bg-gradient-to-r from-gray-600 to-black text-white rounded-full p-3 transform hover:-translate-y-1 shadow-lg">
-              <img src={Github} alt="Github Logo" className="w-9 h-9" />
+              <FontAwesomeIcon
+                icon={["fab", "github"]}
+                className="text-white text-4xl"
+              />
             </button>
           </a>
           <a
@@ -39,7 +49,10 @@ export default function Citation() {
             rel="noreferrer"
           >
             <button className="transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-full p-3 transform hover:-translate-y-1 shadow-lg">
-              <img src={Email} alt="Email Logo" className="w-9 h-9" />
+              <FontAwesomeIcon
+                icon={"envelope"}
+                className="text-black text-4xl"
+              />
             </button>
           </a>
         </div>
