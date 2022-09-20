@@ -8,11 +8,19 @@
   outputs = { self, nixpkgs, flake-utils }:
     with flake-utils.lib;
     eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
+      let pkgs = import nixpkgs { inherit system; };
       in {
 
-        devShell = pkgs.mkShell { buildInputs = with pkgs; [ nodejs yarn nodePackages.firebase-tools nodePackages.ts-node nodePackages.typescript ]; };
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nodejs
+            yarn
+            nodePackages.firebase-tools
+            nodePackages.ts-node
+            nodePackages.typescript
+            scc
+          ];
+        };
 
         formatter = nixpkgs.legacyPackages."${system}".nixfmt;
 

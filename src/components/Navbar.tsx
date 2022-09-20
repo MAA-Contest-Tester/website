@@ -85,11 +85,11 @@ export default function Navbar() {
               </div>
 
               <div className="flex flex-wrap flex-row justify-between">
-                <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
-                  <Link to="/">
+                <Link to="/">
+                  <div className="transition duration-100 ease-out bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-xl p-4 m-2 text-lg transform hover:-translate-y-1 shadow-lg font-bold h-16">
                     <img src={Logo} className="w-7" alt="MAA Tester Logo" />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <Link to="/dashboard">
                   <AuthButton>
                     <FontAwesomeIcon
