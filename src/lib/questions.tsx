@@ -23,13 +23,13 @@ export const getAnswerStateEl = (state: AnswerState, answer: any) => {
 		if (answer) {
 			return (
 				<div className='m-2 p-1 bg-gradient-to-r from-yellow-400 to-yellow-500 text-center text-white rounded-lg flex-auto flex font-semibold'>
-					<div className='m-auto'>Solved</div>
+					<div className='m-auto'>Submitted</div>
 				</div>
 			);
 		}
 		return (
 			<div className='m-2 p-1 bg-gradient-to-r from-blue-600 to-blue-800 text-center text-white rounded-lg flex-auto flex font-semibold'>
-				<div className='m-auto'>Not Solved</div>
+				<div className='m-auto'>Blank</div>
 			</div>
 		);
 	}
