@@ -9,6 +9,7 @@ import { app } from "../Firebase";
 import { perfectScore } from "../../lib/grade";
 import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
+import { debounce } from "debounce";
 
 const Loading = "/images/Logo.png";
 
@@ -20,6 +21,8 @@ type ContestStateType = {
   email: string | null;
   notes: string | null;
   saved: boolean;
+  // unix milliseconds since the last save.
+  lastSaved: number;
 };
 
 export type ContestProps = {
@@ -73,6 +76,7 @@ export default abstract class Contest extends Component<ContestProps> {
           : null,
       notes: null,
       saved: true,
+      lastSaved: 0,
     };
   }
 
@@ -111,7 +115,7 @@ export default abstract class Contest extends Component<ContestProps> {
       const graded = await this.grade(this.url, updatedAnswer);
       this.setState({ correct: graded, loading: false });
       if (!this.preview) this.setState({ saved: false });
-      this.saveAnswers();
+      this.debouncedSave();
     } catch (e) {
       this.setState({
         errors: "Oops! Looks like the API or AOPS is down.",
@@ -143,6 +147,8 @@ export default abstract class Contest extends Component<ContestProps> {
     }
   };
 
+  debouncedSave = debounce(() => this.saveAnswers(), 1000);
+
   static warn(callback: () => any) {
     return () => {
       if (window.confirm("You will lose all of your progress. Are you sure?"))
@@ -162,7 +168,7 @@ export default abstract class Contest extends Component<ContestProps> {
       correct: this.defaultCorrect,
       saved: false,
     });
-    this.saveAnswers();
+    this.debouncedSave();
   };
 
   // clear answer choices + notes + entry from db
@@ -245,7 +251,7 @@ export default abstract class Contest extends Component<ContestProps> {
             value={this.state.notes || ""}
             onChange={async (e) => {
               await this.setState({ notes: e.target.value, saved: false });
-              this.saveAnswers();
+              this.debouncedSave();
             }}
           />
         </div>
