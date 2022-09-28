@@ -11,17 +11,7 @@ import Citation from "./components/Citation";
 import Info from "./components/Information/Info";
 import Preview from "./components/Preview";
 import Settings from "./components/Settings";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import {
-  faDashboard,
-  faEnvelope,
-  faGear,
-  faHome,
-  faInfo,
-  faPlus,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import "./lib/fonts";
 
 function URLContest({ match: { params } }: { match: { params: any } }) {
   return <Contest name={params.contest} />;
@@ -49,16 +39,6 @@ function App() {
   );
 }
 
-library.add(
-  faDashboard,
-  faPlus,
-  faXmark,
-  faGear,
-  faInfo,
-  faHome,
-  fab,
-  faEnvelope
-);
 // dark mode must be set before loading.
 if (localStorage.getItem("darkmode") === "true") {
   document.body.classList.add("dark");
