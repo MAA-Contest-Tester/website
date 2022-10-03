@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { urlSeparator } from "../../lib/fetch_contests";
-import { defaults, getAnswerStateEl, AnswerState } from "../../lib/questions";
+import { defaults, AnswerStateDisplay, AnswerState } from "../../lib/questions";
 import { addExam, clearResponse, getQueryEmailExam } from "../../lib/exam_db";
 import Timer from "../Timer";
 //import Loading from '../../images/Loading.svg';
@@ -273,7 +273,7 @@ export default abstract class Contest extends Component<ContestProps> {
                   {this.renderInputField(number)}
                 </div>
 
-                {getAnswerStateEl(
+                {AnswerStateDisplay(
                   this.state.correct[number],
                   this.state.answer[number]
                 )}
