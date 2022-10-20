@@ -10,7 +10,7 @@ import { perfectScore } from "../../lib/grade";
 import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
 import { debounce } from "debounce";
-import ScoreBox from "../ScoreBox";
+import ScoreBox from "../AMCScoreBox";
 
 const Loading = "/images/Logo.png";
 
@@ -217,7 +217,6 @@ export default abstract class Contest extends Component<ContestProps> {
             Perfect Score
           </h1>
         )}
-        <ScoreBox name={this.name} score={this.score()} />
 
         {this.state.errors && (
           <div className="text-red-500 m-2 p-3 text-lg">
@@ -225,6 +224,7 @@ export default abstract class Contest extends Component<ContestProps> {
           </div>
         )}
         <div className="flex flex-row flex-wrap justify-center">
+          <ScoreBox name={this.name} score={this.score()} />
           <Timer mins={this.timeGiven()} />
           <a
             href={`https://artofproblemsolving.com/wiki/index.php/${this.name}_Problems`}
