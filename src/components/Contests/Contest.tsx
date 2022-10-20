@@ -11,6 +11,7 @@ import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
 import { debounce } from "debounce";
 import ScoreBox from "../AMCScoreBox";
+import RenderNotes from "../RenderNotes";
 
 const Loading = "/images/Logo.png";
 
@@ -245,18 +246,22 @@ export default abstract class Contest extends Component<ContestProps> {
           >
             Grade
           </button>
+        </div>
+        <div className="p-3 mx-5 flex flex-row flex-wrap">
           <textarea
-            rows={4}
-            cols={30}
+            rows={5}
+            cols={40}
             className="border-2 border-black dark:border-white outline-none rounded-lg m-3 p-3 dark:bg-gray-800 dark:text-white"
-            placeholder="Notes Pad for anything involving the contest."
+            placeholder="Notes Pad. Inline LaTeX!"
             value={this.state.notes || ""}
             onChange={async (e) => {
               await this.setState({ notes: e.target.value, saved: false });
               this.debouncedSave();
             }}
           />
+          <RenderNotes text={this.state.notes} />
         </div>
+
         <div className="p-3">
           <h1 className="mx-3 md:mx-5 my-3 p-2 rounded-lg font-bold dark:text-white">
             Answer Sheet
