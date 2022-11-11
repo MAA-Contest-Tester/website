@@ -19,7 +19,7 @@ import { AuthButton } from "./Navbar";
 const GoogleLogo = "/images/Google.svg";
 
 // Your web app's Firebase configuration
-const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASECONFIG!);
+const firebaseConfig = JSON.parse(import.meta.env.REACT_APP_FIREBASECONFIG!);
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

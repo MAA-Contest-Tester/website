@@ -1,17 +1,13 @@
 {
   "name": "maatester",
   "version": "0.1.0",
-  "private": true,
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.4.1",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-fontawesome": "^1.6.5",
     "axios": "^0.21.1",
     "debounce": "^1.2.1",
     "firebase": "^9.0.1",
@@ -22,16 +18,14 @@
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",
     "react-router": "^5.2.1",
-    "react-router-dom": "^5.2.1",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -50,18 +44,20 @@
       "last 1 safari version"
     ]
   },
-  "resolutions": {
-    "react-error-overlay": "6.0.9"
-  },
   "devDependencies": {
-    "@craco/craco": "^6.2.0",
     "@types/debounce": "^1.2.1",
     "@types/katex": "^0.14.0",
     "@types/lodash": "^4.14.172",
-    "@types/react-router-dom": "^5.1.8",
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "react-error-overlay": "6.0.9",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "@types/node": "^12.0.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-fontawesome": "^1.6.5",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
   }
 }
