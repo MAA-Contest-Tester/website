@@ -1,6 +1,6 @@
 //import axios from 'axios';
 import axios from "axios";
-import { AnswerState } from "./questions";
+import { AnswerState } from "@lib/questions";
 
 const getUrl = async (url: string) =>
   await axios.get(import.meta.env.REACT_APP_AOPSFUNCTION, {

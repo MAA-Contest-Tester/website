@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { urlSeparator } from "../../lib/fetch_contests";
-import { defaults, AnswerStateDisplay, AnswerState } from "../../lib/questions";
-import { addExam, clearResponse, getQueryEmailExam } from "../../lib/exam_db";
-import Timer from "../Timer";
+import { urlSeparator } from "@lib/fetch_contests";
+import { defaults, AnswerStateDisplay, AnswerState } from "@lib/questions";
+import { addExam, clearResponse, getQueryEmailExam } from "@lib/exam_db";
+import Timer from "@components/Timer";
 //import Loading from '../../images/Loading.svg';
 import { getAuth, Auth } from "firebase/auth";
-import { app } from "../Firebase";
-import { perfectScore } from "../../lib/grade";
+import { app } from "@components/Firebase";
+import { perfectScore } from "@lib/grade";
 import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
 import { debounce } from "debounce";
-import ScoreBox from "../AMCScoreBox";
-import RenderNotes from "../RenderNotes";
+import ScoreBox from "@components/AMCScoreBox";
+import RenderNotes from "@components/RenderNotes";
 
 const Loading = "/images/Logo.png";
 

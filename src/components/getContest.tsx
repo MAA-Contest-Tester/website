@@ -3,8 +3,8 @@ import AMC from "./Contests/AMC";
 import AMC8 from "./Contests/AMC8";
 import AIME from "./Contests/AIME";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./Firebase";
-import { Error403, Error404 } from "./Errors";
+import { auth } from "@components/Firebase";
+import { Error403, Error404 } from "@components/Errors";
 import {
   AMCExists,
   AIMEExists,

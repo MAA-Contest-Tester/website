@@ -1,5 +1,5 @@
 import React from "react";
-import AMCCutoffs from "../data/cutoffs/amc.json";
+import AMCCutoffs from "@data/cutoffs/amc.json";
 
 enum ScoreStatus {
   Nothing,

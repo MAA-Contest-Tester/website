@@ -1,6 +1,6 @@
 import React from "react";
-import AMC from "./Contests/AMC";
-import { LogIn } from "./Firebase";
+import AMC from "@components/Contests/AMC";
+import { LogIn } from "@components/Firebase";
 
 export default function Preview() {
   return (

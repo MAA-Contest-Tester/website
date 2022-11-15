@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { numberOfProblems } from "../lib/fetch_contests";
-import { Multipliers, Multiplier } from "../lib/grade";
+import { numberOfProblems } from "@lib/fetch_contests";
+import { Multipliers, Multiplier } from "@lib/grade";
 
 const problems = numberOfProblems();
 

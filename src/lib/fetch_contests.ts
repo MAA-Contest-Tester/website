@@ -1,9 +1,9 @@
-import AMC10Contests from "../data/contests/amc10.json";
-import AMC12Contests from "../data/contests/amc12.json";
-import AMC8Contests from "../data/contests/amc8.json";
-import AIMEContests from "../data/contests/aime.json";
-import AJHSMEContests from "../data/contests/ajhsme.json";
-import AHSMEContests from "../data/contests/ahsme.json";
+import AMC10Contests from "@data/contests/amc10.json";
+import AMC12Contests from "@data/contests/amc12.json";
+import AMC8Contests from "@data/contests/amc8.json";
+import AIMEContests from "@data/contests/aime.json";
+import AJHSMEContests from "@data/contests/ajhsme.json";
+import AHSMEContests from "@data/contests/ahsme.json";
 export const urlSeparator = "_";
 
 export type ContestYear = { year: string; contests: string[]; length?: number };

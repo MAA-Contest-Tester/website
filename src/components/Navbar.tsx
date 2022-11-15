@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { auth, LogIn, LogOut } from "./Firebase";
+import { auth, LogIn, LogOut } from "@components/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";

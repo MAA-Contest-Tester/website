@@ -1,5 +1,5 @@
 import AMC from "./AMC";
-import { gradeAMC } from "../../lib/grade";
+import { gradeAMC } from "@/lib/grade";
 
 export default class AMC8 extends AMC {
   numberOfProblems() {

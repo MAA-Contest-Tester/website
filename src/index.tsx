@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Information/Home";
+import "@/index.css";
+import Navbar from "@components/Navbar";
+import Dashboard from "@components/Dashboard";
+import Home from "@components/Information/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Contest from "./components/getContest";
-import { Error404 } from "./components/Errors";
-import Citation from "./components/Citation";
-import Info from "./components/Information/Info";
-import Preview from "./components/Preview";
-import Settings from "./components/Settings";
-import "./lib/fonts";
+import Contest from "@components/getContest";
+import { Error404 } from "@components/Errors";
+import Citation from "@components/Citation";
+import Info from "@components/Information/Info";
+import Preview from "@components/Preview";
+import Settings from "@components/Settings";
+import "@lib/fonts";
 import { useParams } from "react-router-dom";
 
 function URLContest() {

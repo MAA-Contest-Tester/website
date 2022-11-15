@@ -1,7 +1,7 @@
 import AMC from "./AMC";
-import { gradeAMC } from "../../lib/grade";
+import { gradeAMC } from "@lib/grade";
 import { ContestProps } from "./Contest";
-import { defaults } from "../../lib/questions";
+import { defaults } from "@lib/questions";
 
 export default class AHSME extends AMC {
   problemcount: number;

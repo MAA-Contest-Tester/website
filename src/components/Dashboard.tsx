@@ -5,14 +5,14 @@ import {
   ContestYear,
   getAllAJHSME,
   getAllAHSME,
-} from "../lib/fetch_contests";
+} from "@lib/fetch_contests";
 import { Link } from "react-router-dom";
-import { getExamsSolved } from "../lib/user_db";
-import { perfectScore, correctAnswers, getNetScore } from "../lib/grade";
-import StatusBar from "./StatusBar";
-import { auth } from "./Firebase";
+import { getExamsSolved } from "@lib/user_db";
+import { perfectScore, correctAnswers, getNetScore } from "@lib/grade";
+import StatusBar from "@components/StatusBar";
+import { auth } from "@components/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Error403 } from "./Errors";
+import { Error403 } from "@components/Errors";
 
 enum ContestMenuType {
   AMC8,
