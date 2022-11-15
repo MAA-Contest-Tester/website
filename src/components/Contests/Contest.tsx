@@ -12,7 +12,7 @@ import { debounce } from "debounce";
 import ScoreBox from "@components/AMCScoreBox";
 import RenderNotes from "@components/RenderNotes";
 
-const Loading = "/images/Logo.png";
+const Loading = "/images/Logo.webp";
 
 type ContestStateType = {
   answer: any[];

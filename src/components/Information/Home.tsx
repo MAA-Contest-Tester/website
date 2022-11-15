@@ -9,7 +9,11 @@ export default function Home() {
     <>
       <div className="m-2 p-3 dark:text-white">
         <div className="text-center">
-          <img src="/images/Logo.png" alt="Logo" className="w-20 mx-5 inline" />
+          <img
+            src="/images/Logo.webp"
+            alt="Logo"
+            className="w-20 mx-5 inline"
+          />
         </div>
         <h1 className="font-bold text-center text-5xl dark:text-white">
           The MAA{" "}
