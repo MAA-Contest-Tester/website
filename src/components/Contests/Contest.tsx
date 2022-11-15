@@ -7,7 +7,6 @@ import Timer from "@components/Timer";
 import { getAuth, Auth } from "firebase/auth";
 import { app } from "@components/Firebase";
 import { perfectScore } from "@lib/grade";
-import _ from "lodash";
 import { onSnapshot, Unsubscribe } from "@firebase/firestore";
 import { debounce } from "debounce";
 import ScoreBox from "@components/AMCScoreBox";
@@ -157,11 +156,19 @@ export default abstract class Contest extends Component<ContestProps> {
         callback();
     };
   }
+  _isEqual = (a: any[], b: any[]) => {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  };
+
   // clear all of the answer choices
   clearAnswers = async () => {
     if (
-      _.isEqual(this.state.answer, this.defaultAnswer) &&
-      _.isEqual(this.state.correct, this.defaultCorrect)
+      this._isEqual(this.state.answer, this.defaultAnswer) &&
+      this._isEqual(this.state.correct, this.defaultCorrect)
     ) {
       return;
     }

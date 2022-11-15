@@ -1,7 +1,4 @@
 import React from "react";
-import AMC from "./Contests/AMC";
-import AMC8 from "./Contests/AMC8";
-import AIME from "./Contests/AIME";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@components/Firebase";
 import { Error403, Error404 } from "@components/Errors";
@@ -10,46 +7,70 @@ import {
   AIMEExists,
   AHSMEProblemCount,
 } from "../lib/fetch_contests";
-import AHSME from "./Contests/AHSME";
-import AJHSME from "./Contests/AJHSME";
+import Lazy from "./Lazy";
 
 const getAMC = (name: string) => {
+  const AMC = React.lazy(() => import("@components/Contests/AMC"));
   if (AMCExists(name)) {
-    return <AMC name={name} />;
+    return (
+      <Lazy>
+        <AMC name={name} />
+      </Lazy>
+    );
   } else {
     return <Error404 />;
   }
 };
 
 const getAMC8 = (name: string) => {
+  const AMC8 = React.lazy(() => import("@components/Contests/AMC8"));
   if (AMCExists(name)) {
-    return <AMC8 name={name} />;
+    return (
+      <Lazy>
+        <AMC8 name={name} />
+      </Lazy>
+    );
   } else {
     return <Error404 />;
   }
 };
 
 const getAIME = (name: string) => {
+  const AIME = React.lazy(() => import("@components/Contests/AIME"));
   if (AIMEExists(name)) {
-    return <AIME name={name} />;
+    return (
+      <Lazy>
+        <AIME name={name} />
+      </Lazy>
+    );
   } else {
     return <Error404 />;
   }
 };
 
 const getAHSME = (name: string) => {
+  const AHSME = React.lazy(() => import("@components/Contests/AHSME"));
   const length = AHSMEProblemCount(name);
   if (length) {
-    return <AHSME name={name} length={length} />;
+    return (
+      <Lazy>
+        <AHSME name={name} length={length} />
+      </Lazy>
+    );
   } else {
     return <Error404 />;
   }
 };
 
 const getAJHSME = (name: string) => {
+  const AJHSME = React.lazy(() => import("@components/Contests/AJHSME"));
   const length = AHSMEProblemCount(name);
   if (length) {
-    return <AJHSME name={name} length={length} />;
+    return (
+      <Lazy>
+        <AJHSME name={name} length={length} />
+      </Lazy>
+    );
   } else {
     return <Error404 />;
   }

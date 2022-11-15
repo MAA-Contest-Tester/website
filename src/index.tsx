@@ -2,35 +2,71 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "@/index.css";
 import Navbar from "@components/Navbar";
-import Dashboard from "@components/Dashboard";
-import Home from "@components/Information/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Contest from "@components/getContest";
+import GetContest from "@components/getContest";
 import { Error404 } from "@components/Errors";
 import Citation from "@components/Citation";
-import Info from "@components/Information/Info";
-import Preview from "@components/Preview";
-import Settings from "@components/Settings";
 import "@lib/fonts";
 import { useParams } from "react-router-dom";
+import Lazy from "./components/Lazy";
 
 function URLContest() {
   const { contest } = useParams();
-  return <Contest name={contest!} />;
+  return <GetContest name={contest!} />;
 }
 
 function App() {
+  const Home = React.lazy(() => import("@components/Information/Home"));
+  const Dashboard = React.lazy(() => import("@components/Dashboard"));
+  const Preview = React.lazy(() => import("@components/Preview"));
+  const Info = React.lazy(() => import("@components/Information/Info"));
+  const Settings = React.lazy(() => import("@components/Settings"));
   return (
     <div className="min-w-screen min-h-screen">
       <Router>
         <Navbar />
         <div className="mx-2 px-5">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/preview" element={<Preview />} />
-            <Route path="/info" element={<Info />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route
+              path="/"
+              element={
+                <Lazy>
+                  <Home />
+                </Lazy>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <Lazy>
+                  <Dashboard />
+                </Lazy>
+              }
+            />
+            <Route
+              path="/preview"
+              element={
+                <Lazy>
+                  <Preview />
+                </Lazy>
+              }
+            />
+            <Route
+              path="/info"
+              element={
+                <Lazy>
+                  <Info />
+                </Lazy>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <Lazy>
+                  <Settings />
+                </Lazy>
+              }
+            />
             <Route path="/:contest" element={<URLContest />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
