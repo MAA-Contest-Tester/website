@@ -8,6 +8,7 @@
   status = 200
 
 [[redirects]]
-  from = "https://maatester.netlify.app"
-  to = "https://maatester.com"
+  from = "https://maatester.netlify.app/*"
+  to = "https://maatester.com/:splat"
   status = 301
+  force = true
