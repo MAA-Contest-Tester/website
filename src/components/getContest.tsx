@@ -2,12 +2,8 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@components/Firebase";
 import { Error403, Error404 } from "@components/Errors";
-import {
-  AMCExists,
-  AIMEExists,
-  AHSMEProblemCount,
-} from "../lib/fetch_contests";
-import Lazy from "./Lazy";
+import { AMCExists, AIMEExists, AHSMEProblemCount } from "@lib/fetch_contests";
+import Lazy from "@components/Lazy";
 
 const getAMC = (name: string) => {
   const AMC = React.lazy(() => import("@components/Contests/AMC"));

@@ -4,11 +4,10 @@ import "@/index.css";
 import Navbar from "@components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetContest from "@components/getContest";
-import { Error404 } from "@components/Errors";
-import Citation from "@components/Citation";
 import "@lib/fonts";
 import { useParams } from "react-router-dom";
 import Lazy from "./components/Lazy";
+import Citation from "@components/Citation";
 
 function URLContest() {
   const { contest } = useParams();
@@ -21,6 +20,7 @@ function App() {
   const Preview = React.lazy(() => import("@components/Preview"));
   const Info = React.lazy(() => import("@components/Information/Info"));
   const Settings = React.lazy(() => import("@components/Settings"));
+  const Error404 = React.lazy(() => import("@components/Errors"));
   return (
     <div className="min-w-screen min-h-screen">
       <Router>
@@ -67,8 +67,22 @@ function App() {
                 </Lazy>
               }
             />
-            <Route path="/:contest" element={<URLContest />} />
-            <Route path="*" element={<Error404 />} />
+            <Route
+              path="/:contest"
+              element={
+                <Lazy>
+                  <URLContest />
+                </Lazy>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <Lazy>
+                  <Error404 />
+                </Lazy>
+              }
+            />
           </Routes>
           <Citation />
         </div>

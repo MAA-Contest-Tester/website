@@ -18,4 +18,18 @@ export default defineConfig({
       "@data": path.resolve(__dirname, "src", "data"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          firebase: [
+            "firebase/app",
+            "firebase/analytics",
+            "firebase/firestore",
+            "firebase/auth",
+          ],
+        },
+      },
+    },
+  },
 });

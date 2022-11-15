@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "@/index.css";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
