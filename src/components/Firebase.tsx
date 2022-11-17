@@ -8,12 +8,20 @@ import { getAnalytics } from "firebase/analytics";
 import { NavLink } from "react-router-dom";
 import "firebase/firestore";
 import {
+  connectAuthEmulator,
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { AuthButton } from "./Navbar";
+import {
+  connectFirestoreEmulator,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 
 //import GoogleLogo from '../images/Google.svg';
 const GoogleLogo = "/images/Google.svg";
@@ -21,12 +29,23 @@ const GoogleLogo = "/images/Google.svg";
 // Your web app's Firebase configuration
 const firebaseConfig = JSON.parse(import.meta.env.REACT_APP_FIREBASECONFIG!);
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const analytics = getAnalytics(app);
 auth.useDeviceLanguage();
 const googleprovider = new GoogleAuthProvider();
+
+export const db = getFirestore();
+
+if ((import.meta.env as any).DEV) {
+  connectAuthEmulator(auth, "http://localhost:5001");
+  connectFirestoreEmulator(db, "localhost", 5003);
+  // const docRef = doc(db, "Counts", "default");
+  // const docSnap = await getDoc(docRef);
+  // if (!docSnap.exists()) {
+  //   setDoc(docRef, { contests: 0 });
+  // }
+}
 
 export function LogIn() {
   const login = async (provider: GoogleAuthProvider) => {

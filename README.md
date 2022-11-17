@@ -1,12 +1,14 @@
 # MAA Tester
 
-This is a website designed to help facilitate preparation for various MAA contests.
-It supports all AMC 8/10/12 and AIME contests.
+An integrated testing environment designed to help you achieve your math contest
+goals by automatically organizing your progress on your practice contests.
 
-The website is currently deployed at [maatester.com](https://maatester.com).
+## Development Setup
 
-## Technologies Used
+You'll need Node.JS on your system.
 
-- [React](https://reactjs.org)
-- [Firebase](https://firebase.google.com)
-- [TailwindCSS](https://tailwindcss.com)
+`yarn install` will install all necessary nodejs dependencies.
+
+## Dev Server
+
+Run `yarn dev & npx firebase emulators:start`.

@@ -2,8 +2,12 @@
 import axios from "axios";
 import { AnswerState } from "@lib/questions";
 
+const aopsfunction = import.meta.env.DEV
+  ? "http://localhost:5002/fir-first-juni/us-central1/aops"
+  : import.meta.env.REACT_APP_AOPSFUNCTION;
+
 const getUrl = async (url: string) =>
-  await axios.get(import.meta.env.REACT_APP_AOPSFUNCTION, {
+  await axios.get(aopsfunction, {
     params: {
       url: url,
     },

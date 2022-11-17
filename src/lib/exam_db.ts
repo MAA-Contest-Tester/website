@@ -8,12 +8,12 @@ import {
   deleteDoc,
   addDoc,
   updateDoc,
+  connectFirestoreEmulator,
 } from "@firebase/firestore";
 import { logEvent } from "firebase/analytics";
 import { analytics } from "../components/Firebase";
 import { AnswerState } from "./questions";
-
-const db = getFirestore();
+import { db } from "@components/Firebase";
 
 export const examsRef = collection(db, "Exams");
 
@@ -59,7 +59,9 @@ export async function addExam(
   const response = await getID(email, exam);
   if (!response) {
     // create new document
-    logEvent(analytics, "new_contest_added", { email, exam });
+    if (import.meta.env.PROD) {
+      logEvent(analytics, "new_contest_added", { email, exam });
+    }
     await addDoc(examsRef, {
       email: email,
       exam: exam,
