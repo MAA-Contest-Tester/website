@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   getAllAMC,
   getAllAIME,
@@ -10,9 +10,8 @@ import { Link } from "react-router-dom";
 import { getExamsSolved } from "@lib/user_db";
 import { perfectScore, correctAnswers, getNetScore } from "@lib/grade";
 import StatusBar from "@components/StatusBar";
-import { auth } from "@components/Firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Error403 } from "@components/Errors";
+import { AuthContext } from "@components/AuthProvider";
 
 enum ContestMenuType {
   AMC8,
@@ -62,7 +61,7 @@ export default function Dashboard() {
       : ContestMenuType.AMC8
   );
 
-  const [user] = useAuthState(auth);
+  const user = useContext(AuthContext);
   // take from localstorage cache
   const [solved, setSolved] = useState(
     new Set<string>(

@@ -1,9 +1,8 @@
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@components/Firebase";
+import React, { useContext } from "react";
 import { Error403, Error404 } from "@components/Errors";
 import { AMCExists, AIMEExists, AHSMEProblemCount } from "@lib/fetch_contests";
 import Lazy from "@components/Lazy";
+import { AuthContext } from "./AuthProvider";
 
 const getAMC = (name: string) => {
   const AMC = React.lazy(() => import("@components/Contests/AMC"));
@@ -73,7 +72,7 @@ const getAJHSME = (name: string) => {
 };
 
 export default function Contest(props: { name: string; preview?: boolean }) {
-  const [user] = useAuthState(auth);
+  const user = useContext(AuthContext);
   const preview = props.preview ? props.preview : false;
   if (!user && !preview) {
     return <Error403 />;

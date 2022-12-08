@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import { auth, LogIn, LogOut } from "@components/Firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { LogIn, LogOut } from "@components/Firebase";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AuthContext } from "./AuthProvider";
 
 const Logo = "/images/Logo.webp";
 
@@ -19,7 +19,7 @@ export function AuthButton(props: { children: React.ReactNode }) {
 }
 
 export default function Navbar() {
-  const [user] = useAuthState(auth);
+  const user = useContext(AuthContext);
   const hiddenState = localStorage.getItem("maatester_navbarmode") === "true";
   const [hidden, setHidden] = useState(hiddenState);
   return (
