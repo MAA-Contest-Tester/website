@@ -5,10 +5,12 @@ goals by automatically organizing your progress on your practice contests.
 
 ## Development Setup
 
-You'll need Node.JS on your system. If you're on a nix system, you can just do
+You'll need nodejs and yarn on your system. If you're on a nix system, you can just do
 `nix develop` and the correct versions will be in your dev environment.
 
-`yarn install` will then install all necessary nodejs dependencies.
+Once you're in an appropriate development environment, run `yarn run setup` to
+compile all functions and install all dependencies. It will invoke the
+`setup.sh` script.
 
 ### Dev Server
 
