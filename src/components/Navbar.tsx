@@ -4,7 +4,7 @@ import { LogIn, LogOut } from "@components/Firebase";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AuthContext } from "./AuthProvider";
+import { AuthContext } from "@components/AuthProvider";
 
 const Logo = "/images/Logo.webp";
 

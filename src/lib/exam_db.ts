@@ -1,14 +1,12 @@
 import {
   collection,
   doc,
-  getFirestore,
   query,
   where,
   getDocs,
   deleteDoc,
   addDoc,
   updateDoc,
-  connectFirestoreEmulator,
 } from "@firebase/firestore";
 import { logEvent } from "firebase/analytics";
 import { analytics } from "../components/Firebase";

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "@/index.css";
+import "./index.css";
 import Navbar from "@components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetContest from "@components/getContest";

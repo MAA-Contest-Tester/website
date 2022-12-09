@@ -1,8 +1,7 @@
 import React from "react";
-import "@/index.css";
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { FirebaseOptions, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // redirection (from stackoverflow)
 import { NavLink } from "react-router-dom";
@@ -14,20 +13,21 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { AuthButton } from "./Navbar";
-import {
-  connectFirestoreEmulator,
-  doc,
-  getDoc,
-  getFirestore,
-  setDoc,
-} from "firebase/firestore";
+import { AuthButton } from "@components/Navbar";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 
 //import GoogleLogo from '../images/Google.svg';
 const GoogleLogo = "/images/Google.svg";
 
 // Your web app's Firebase configuration
-const firebaseConfig = JSON.parse(import.meta.env.REACT_APP_FIREBASECONFIG!);
+const firebaseConfig: FirebaseOptions = import.meta.env.DEV
+  ? {
+      projectId: "demo-maatester",
+      apiKey: "...",
+      authDomain: "...",
+      appId: "test",
+    }
+  : JSON.parse(import.meta.env.REACT_APP_FIREBASECONFIG!);
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
