@@ -1,9 +1,9 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import axios from "axios";
+import { FieldValue } from "firebase-admin/firestore";
 
 admin.initializeApp();
-const firestore = admin.firestore();
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -49,23 +49,40 @@ export const aops = functions.https.onRequest(
 
 export const incrementcount = functions.firestore
   .document("Exams/{examId}")
-  .onCreate((snapshot, context) => {
-    firestore
+  .onCreate(async (snapshot, context) => {
+    const firestore = admin.firestore();
+    if (process.env.FIREBASE_DEBUG_MODE == "true") {
+      let document = await firestore.collection("Counts").doc("default").get();
+      if (!document.exists) {
+        await firestore.collection("Counts").doc("default").set({
+          contests: 0,
+        });
+      }
+    }
+    await firestore
       .collection("Counts")
       .doc("default")
       .update({
-        contests: admin.firestore.FieldValue.increment(1),
+        contests: FieldValue.increment(1),
       });
   });
 
 export const decrementcount = functions.firestore
   .document("Exams/{examId}")
-  .onDelete((snapshot, context) => {
+  .onDelete(async (snapshot, context) => {
     const firestore = admin.firestore();
-    firestore
+    if (process.env.FIREBASE_DEBUG_MODE == "true") {
+      let document = await firestore.collection("Counts").doc("default").get();
+      if (!document.exists) {
+        await firestore.collection("Counts").doc("default").set({
+          contests: 0,
+        });
+      }
+    }
+    await firestore
       .collection("Counts")
       .doc("default")
       .update({
-        contests: admin.firestore.FieldValue.increment(-1),
+        contests: FieldValue.increment(-1),
       });
   });

@@ -13,11 +13,8 @@
 
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            nodejs
+            nodejs-16_x
             yarn
-            nodePackages.firebase-tools
-            nodePackages.ts-node
-            nodePackages.typescript
             scc
           ];
         };

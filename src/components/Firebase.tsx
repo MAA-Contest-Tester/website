@@ -40,16 +40,18 @@ export const db = getFirestore();
 if ((import.meta.env as any).DEV) {
   connectAuthEmulator(auth, "http://localhost:5001");
   connectFirestoreEmulator(db, "localhost", 5003);
-  // const docRef = doc(db, "Counts", "default");
-  // const docSnap = await getDoc(docRef);
-  // if (!docSnap.exists()) {
-  //   setDoc(docRef, { contests: 0 });
-  // }
 }
 
 export function LogIn() {
   const login = async (provider: GoogleAuthProvider) => {
     signInWithPopup(auth, provider);
+    if ((import.meta.env as any).DEV) {
+      const docRef = doc(db, "Counts", "default");
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        setDoc(docRef, { contests: 0 });
+      }
+    }
   };
   return (
     <button
