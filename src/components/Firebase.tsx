@@ -45,13 +45,6 @@ if ((import.meta.env as any).DEV) {
 export function LogIn() {
   const login = async (provider: GoogleAuthProvider) => {
     signInWithPopup(auth, provider);
-    if ((import.meta.env as any).DEV) {
-      const docRef = doc(db, "Counts", "default");
-      const docSnap = await getDoc(docRef);
-      if (!docSnap.exists()) {
-        setDoc(docRef, { contests: 0 });
-      }
-    }
   };
   return (
     <button
