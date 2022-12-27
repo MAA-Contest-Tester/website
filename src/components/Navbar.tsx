@@ -114,6 +114,14 @@ export default function Navbar() {
                     />
                   </AuthButton>
                 </Link>
+                <a href="https://search.maatester.com" target="_blank">
+                  <AuthButton>
+                    <FontAwesomeIcon
+                      icon="magnifying-glass"
+                      className="w-7 text-black text-3xl"
+                    />
+                  </AuthButton>
+                </a>
                 <LogOut />
               </div>
             </>

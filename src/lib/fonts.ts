@@ -13,6 +13,7 @@ import {
   faGear,
   faHome,
   faInfo,
+  faMagnifyingGlass,
   faPlus,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
@@ -30,5 +31,6 @@ library.add(
   faWindows,
   faLinux,
   faWordpress,
-  faEnvelope
+  faEnvelope,
+  faMagnifyingGlass
 );

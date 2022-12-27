@@ -39,7 +39,7 @@ export default function Citation() {
             </button>
           </a>
           <a
-            href="mailto:maatesterapp703.gmail.com"
+            href="mailto:maatesterapp703@gmail.com"
             target="_blank"
             rel="noreferrer"
           >
