@@ -6,14 +6,6 @@ export default function Citation() {
     <>
       <div className="m-1 p-3 rounded-xl flex-1 text-center">
         <div className="flex flex-row flex-wrap justify-center gap-2">
-          <a href="https://blog.maatester.com" target="_blank" rel="noreferrer">
-            <button className="transition duration-100 bg-gradient-to-r from-gray-100 to-gray-400 text-white rounded-full p-3 transform hover:-translate-y-1 shadow-lg">
-              <FontAwesomeIcon
-                icon={["fab", "wordpress"]}
-                className="text-black text-4xl"
-              />
-            </button>
-          </a>
           <a
             href="https://www.youtube.com/channel/UC8hoATFdyqpN1ZUfrduqyCg"
             target="_blank"
