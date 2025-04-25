@@ -1,5 +1,9 @@
 [
   {
+    "year": "2025",
+    "contests": ["2025_AIME_I", "2025_AIME_II"]
+  },
+  {
     "year": "2024",
     "contests": ["2024_AIME_I", "2024_AIME_II"]
   },
